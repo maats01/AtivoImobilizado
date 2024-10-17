@@ -9,7 +9,7 @@ CREATE TABLE FILIAL(
     CIDADE varchar(255),
     BAIRRO varchar(255),
     RUA varchar(255),
-    NUMERO varchar(5)
+    NUMERO int
 );
 
 CREATE TABLE CATEGORIA(
