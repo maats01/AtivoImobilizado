@@ -31,8 +31,8 @@ class AtivoRepository
             $data_aquisicao = "'{$data_aquisicao->format('Y-m-d')}'";
         }
 
-        $sqlGravar = "INSERT INTO ATIVO 
-            (FILIAL_ID, SETOR_ID, CATEGORIA_ID, DESCRICAO, DATA_CADASTRO, DATA_AQUISICAO, VIDA_UTIL, CONDICAO, ESTADO_ATIVO, VALOR)
+        $query = "
+            INSERT INTO ATIVO (FILIAL_ID, SETOR_ID, CATEGORIA_ID, DESCRICAO, DATA_CADASTRO, DATA_AQUISICAO, VIDA_UTIL, CONDICAO, ESTADO_ATIVO, VALOR)
             VALUES 
             (
                 $filial_id,
@@ -48,7 +48,7 @@ class AtivoRepository
             )
         ";
 
-        $this->bd->query($sqlGravar);
+        $this->bd->query($query);
     }
 
     public function atualizar(Ativo $ativo)
@@ -75,7 +75,7 @@ class AtivoRepository
             $data_aquisicao = "'{$data_aquisicao->format('Y-m-d')}'";
         }
 
-        $sqlEditar = "
+        $query = "
             UPDATE ATIVO SET
                 FILIAL_ID = $filial_id,
                 SETOR_ID = $setor_id,
@@ -90,24 +90,22 @@ class AtivoRepository
             WHERE ID = $id
         ";
 
-        $this->bd->query($sqlEditar);
+        $this->bd->query($query);
     }
 
     public function remover(int $id)
     {
-        $sqlRemover = "DELETE FROM ATIVO WHERE ID = $id";
+        $query = "DELETE FROM ATIVO WHERE ID = $id";
 
-        $this->bd->query($sqlRemover);
+        $this->bd->query($query);
     }
 
     public function buscarTarefa(int $id) : Ativo
     {
-        $sqlBusca = "SELECT * FROM ATIVO WHERE ID = $id";
-        $resultado = $this->bd->query($sqlBusca);
+        $query = "SELECT * FROM ATIVO WHERE ID = $id";
+        $resultado = $this->bd->query($query);
 
-        $tarefa = $resultado->fetch_object('Ativo');
-
-        return $tarefa;
+        return $resultado->fetch_object('Ativo');
     }
 }
 ?>

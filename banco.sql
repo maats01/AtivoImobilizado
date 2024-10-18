@@ -4,6 +4,7 @@ USE imobilizado;
 
 CREATE TABLE FILIAL(
 	ID int auto_increment primary key,
+    NOME_FILIAL varchar(255),
     CNPJ varchar(14),
     ESTADO char(2),
     CIDADE varchar(255),
@@ -23,6 +24,7 @@ CREATE TABLE SETOR(
 );
 
 CREATE TABLE SETOR_FILIAL(
+    ID int auto_increment primary key,
 	SETOR_ID int not null,
     FILIAL_ID int not null,
     FOREIGN KEY (SETOR_ID) REFERENCES SETOR(ID),

@@ -1,8 +1,19 @@
 <?php 
 class SetorFilial
 {
+    private int $id;
     private int $setor_id;
     private int $filial_id;
+
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
+
+    public function getId() : int
+    {
+        return $this->id;
+    }
 
     public function setSetorId(int $id)
     {
