@@ -9,7 +9,7 @@ class Ativo
     private DateTime $data_aquisicao;
     private DateTime $data_cadastro;
     private int $vida_util;
-    private bool $status;
+    private bool $condicao;
     private int $estado_ativo;
     private float $valor;
 
@@ -93,14 +93,14 @@ class Ativo
         return $this->vida_util;
     }
 
-    public function setStatus(bool $stat)
+    public function setCondicao(bool $stat)
     {
-        $this->status = $stat;
+        $this->condicao = $stat;
     }
 
-    public function getStatus() : bool
+    public function getCondicao() : bool
     {
-        return $this->status;
+        return $this->condicao;
     }
 
     public function setEstadoAtivo(int $estado)
