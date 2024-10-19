@@ -1,4 +1,6 @@
 <?php 
+require_once 'Utils/DateTimeUtil.php';
+
 class Transferencia
 {
     private int $id_ativo;
@@ -6,9 +8,9 @@ class Transferencia
     private int $id_setor_origem;
     private int $id_filial_destino;
     private int $id_setor_destino;
-    private DateTime $data_transferencia;
+    private ?DateTime $data_transferencia = null;
 
-    public function setIdAtivo(int $id)
+    public function setIdAtivo(int $id) : void
     {
         $this->id_ativo = $id;
     }
@@ -18,7 +20,7 @@ class Transferencia
         return $this->id_ativo;
     }
 
-    public function setIdFilialOrigem(int $id)
+    public function setIdFilialOrigem(int $id) : void
     {
         $this->id_filial_origem = $id;
     }
@@ -28,7 +30,7 @@ class Transferencia
         return $this->id_filial_origem;
     }
 
-    public function setIdFilialDestino(int $id)
+    public function setIdFilialDestino(int $id) : void
     {
         $this->id_filial_destino = $id;
     }
@@ -38,7 +40,7 @@ class Transferencia
         return $this->id_filial_destino;
     }
 
-    public function setIdSetorOrigem(int $id)
+    public function setIdSetorOrigem(int $id) : void
     {
         $this->id_setor_origem = $id;
     }
@@ -48,7 +50,7 @@ class Transferencia
         return $this->id_setor_origem;
     }
 
-    public function setIdSetorDestino(int $id)
+    public function setIdSetorDestino(int $id) : void
     {
         $this->id_setor_destino = $id;
     }
@@ -58,14 +60,14 @@ class Transferencia
         return $this->id_setor_destino;
     }
 
-    public function setData(DateTime $data)
+    public function setData(DateTime|string $data) : void
     {
-        $this->data_transferencia = $data;
+        $this->data_transferencia = DateTimeUtil::convertToDateTime($data);
     }
 
-    public function getData() : DateTime
+    public function getData() : ?string
     {
-        return $this->data_transferencia;
+        return $this->data_transferencia?->format('Y-m-d H:i:s');
     }
 }
 ?>

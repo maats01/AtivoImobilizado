@@ -4,7 +4,7 @@ class Categoria
     private int $id;
     private string $descricao;
 
-    public function setId(int $id)
+    public function setId(int $id) : void
     {
         $this->id = $id;
     }
@@ -14,7 +14,7 @@ class Categoria
         return $this->id;
     }
 
-    public function setDescricao(string $desc)
+    public function setDescricao(string $desc) : void
     {
         $this->descricao = $desc;
     }

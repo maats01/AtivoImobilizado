@@ -3,12 +3,12 @@ class FilialRepository
 {
     private $bd;
 
-    public function __construct(mysqli $bd)
+    public function __construct(PDO $bd)
     {
         $this->bd = $bd;
     }
 
-    public function salvar(Filial $filial)
+    public function salvar(Filial $filial) : void
     {
         $cnpj = $filial->getCnpj();
         $nome = $filial->getNome();
@@ -22,20 +22,29 @@ class FilialRepository
             INSERT INTO FILIAL (NOME_FILIAL, CNPJ, ESTADO, CIDADE, BAIRRO, RUA, NUMERO)
             VALUES
             (
-                '$nome',
-                '$cnpj',
-                '$estado',
-                '$cidade',
-                '$bairro',
-                '$rua',
-                $numero
+                :nome,
+                :cnpj,
+                :estado,
+                :cidade,
+                :bairro,
+                :rua,
+                :numero
             )
         ";
 
-        $this->bd->query($query);
+        $stmt = $this->bd->prepare($query);
+        $stmt->execute([
+            ':nome' => $nome,
+            ':cnpj' => $cnpj,
+            ':estado' => $estado,
+            ':cidade' => $cidade,
+            ':bairro' => $bairro,
+            ':rua' => $rua,
+            ':numero' => $numero
+        ]);
     }
 
-    public function atualizar(Filial $filial)
+    public function atualizar(Filial $filial) : void
     {
         $id = $filial->getId();
         $cnpj = $filial->getCnpj();
@@ -48,32 +57,80 @@ class FilialRepository
 
         $query = "
             UPDATE FILIAL SET
-                NOME_FILIAL = '$nome',
-                CNPJ = '$cnpj',
-                ESTADO = '$estado',
-                CIDADE = '$cidade',
-                BAIRRO = '$bairro',
-                RUA = '$rua',
-                NUMERO = $numero
-            WHERE ID = $id
+                NOME_FILIAL = :nome,
+                CNPJ = :cnpj,
+                ESTADO = :estado,
+                CIDADE = :cidade,
+                BAIRRO = :bairro,
+                RUA = :rua,
+                NUMERO = :numero
+            WHERE ID = :id
         ";
 
-        $this->bd->query($query);
+        $stmt = $this->bd->prepare($query);
+        $stmt->execute([
+            ':nome' => $nome,
+            ':cnpj' => $cnpj,
+            ':estado' => $estado,
+            ':cidade' => $cidade,
+            ':bairro' => $bairro,
+            ':rua' => $rua,
+            ':numero' => $numero,
+            ':id' => $id
+        ]);
     }
 
-    public function remover(int $id)
+    public function remover(int $id) : bool
     {
-        $query = "DELETE FROM FILIAL WHERE ID = $id";
+        $query = "DELETE FROM FILIAL WHERE ID = :id";
 
-        $this->bd->query($query);
+        $stmt = $this->bd->prepare($query);
+        
+        return $stmt->execute([':id' => $id]);
     }
 
-    public function buscarFilial(int $id) : Filial
+    public function buscar(int $id = 0) : Filial|array|null
     {
-        $query = "SELECT * FROM FILIAL WHERE ID = $id";
-        $resultado = $this->bd->query($query);
+        if ($id > 0)
+        {
+            return $this->buscarFilial($id);
+        }
+        else
+        {
+            return $this->buscarFiliais();
+        }
+    }
 
-        return $resultado->fetch_object('Filial');
+    private function buscarFilial(int $id) : ?Filial
+    {
+        $query = "SELECT * FROM FILIAL WHERE ID = :id";
+        
+        $stmt = $this->bd->prepare($query);
+        $stmt->execute([':id' => $id]);
+
+        $filial = $stmt->fetchObject('Filial');
+
+        if ($filial === false)
+        {
+            return null;
+        }
+
+        return $filial;
+    }
+
+    private function buscarFiliais() : array
+    {
+        $query = "SELECT * FROM FILIAL";
+        $stmt = $this->bd->query($query);
+
+        $filiais = [];
+
+        while ($filial = $stmt->fetchObject('Filial'))
+        {
+            $filiais[] = $filial;
+        }
+
+        return $filiais;
     }
 }
 ?>

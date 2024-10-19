@@ -1,4 +1,6 @@
 <?php
+require_once 'Utils/DateTimeUtil.php';
+
 class Ativo 
 {
     private int $id;
@@ -6,14 +8,14 @@ class Ativo
     private int $filial_id;
     private int $categoria_id;
     private string $descricao;
-    private DateTime $data_aquisicao;
-    private DateTime $data_cadastro;
+    private ?DateTime $data_aquisicao = null;
+    private ?DateTime $data_cadastro = null;
     private int $vida_util;
     private bool $condicao;
     private int $estado_ativo;
     private float $valor;
 
-    public function setId(int $id)
+    public function setId(int $id) : void
     {
         $this->id = $id;
     }
@@ -23,7 +25,7 @@ class Ativo
         return $this->id;
     }
 
-    public function setSetorId(int $id)
+    public function setSetorId(int $id) : void
     {
         $this->setor_id = $id;
     }
@@ -33,7 +35,7 @@ class Ativo
         return $this->setor_id;
     }
 
-    public function setFilialId(int $id)
+    public function setFilialId(int $id) : void
     {
         $this->filial_id = $id;
     }
@@ -43,7 +45,7 @@ class Ativo
         return $this->filial_id;
     }
 
-    public function setCategoriaId(int $id)
+    public function setCategoriaId(int $id) : void
     {
         $this->categoria_id = $id;
     }
@@ -53,7 +55,7 @@ class Ativo
         return $this->categoria_id;
     }
 
-    public function setDescricao(string $desc)
+    public function setDescricao(string $desc) : void
     {
         $this->descricao = $desc;
     }
@@ -63,27 +65,27 @@ class Ativo
         return $this->descricao;
     }
 
-    public function setDataCadastro(DateTime $data)
+    public function setDataCadastro(DateTime|string $data) : void
     {
-        $this->data_cadastro = $data;
+        $this->data_cadastro = DateTimeUtil::convertToDateTime($data);
     }
 
-    public function getDataCadastro() : DateTime
+    public function getDataCadastro() : ?string
     {
-        return $this->data_cadastro;
+        return $this->data_cadastro?->format('Y-m-d H:i:s');
     }
 
-    public function setDataAquisicao(DateTime $data)
+    public function setDataAquisicao(DateTime|string $data) : void
     {
-        $this->data_aquisicao = $data;
+        $this->data_aquisicao = DateTimeUtil::convertToDateTime($data);
     }
 
-    public function getDataAquisicao() : DateTime
+    public function getDataAquisicao() : ?string
     {
-        return $this->data_aquisicao;
+        return $this->data_aquisicao?->format('Y-m-d H:i:s');
     }
 
-    public function setVidaUtil(int $v)
+    public function setVidaUtil(int $v) : void
     {
         $this->vida_util = $v;
     }
@@ -93,7 +95,7 @@ class Ativo
         return $this->vida_util;
     }
 
-    public function setCondicao(bool $stat)
+    public function setCondicao(bool $stat) : void
     {
         $this->condicao = $stat;
     }
@@ -103,7 +105,7 @@ class Ativo
         return $this->condicao;
     }
 
-    public function setEstadoAtivo(int $estado)
+    public function setEstadoAtivo(int $estado) : void
     {
         $this->estado_ativo = $estado;
     }
@@ -113,7 +115,7 @@ class Ativo
         return $this->estado_ativo;
     }
 
-    public function setValor(float $valor)
+    public function setValor(float $valor) : void
     {
         $this->valor = $valor;
     }

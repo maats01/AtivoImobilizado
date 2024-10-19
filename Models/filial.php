@@ -10,7 +10,7 @@ class Filial
     private string $rua;
     private int $numero;
 
-    public function setId(int $id)
+    public function setId(int $id) : void
     {
         $this->id = $id;
     }
@@ -20,7 +20,7 @@ class Filial
         return $this->id;
     }
 
-    public function setCnpj(string $cnpj)
+    public function setCnpj(string $cnpj) : void
     {
         $this->cnpj = $cnpj;
     }
@@ -30,7 +30,7 @@ class Filial
         return $this->cnpj;
     }
 
-    public function setNome(string $nome)
+    public function setNome(string $nome) : void
     {
         $this->nome_filial = $nome;
     }
@@ -40,7 +40,7 @@ class Filial
         return $this->nome_filial;
     }
 
-    public function setEstado(string $estado)
+    public function setEstado(string $estado) : void
     {
         $this->estado = $estado;
     }
@@ -50,7 +50,7 @@ class Filial
         return $this->estado;
     }
 
-    public function setCidade(string $cidade)
+    public function setCidade(string $cidade) : void
     {
         $this->cidade = $cidade;
     }
@@ -60,7 +60,7 @@ class Filial
         return $this->cidade;
     }
 
-    public function setBairro(string $bairro)
+    public function setBairro(string $bairro) : void
     {
         $this->bairro = $bairro;
     }
@@ -70,7 +70,7 @@ class Filial
         return $this->bairro;
     }
 
-    public function setRua(string $rua)
+    public function setRua(string $rua) : void
     {
         $this->rua = $rua;
     }
@@ -80,7 +80,7 @@ class Filial
         return $this->rua;
     }
 
-    public function setNumero(int $numero)
+    public function setNumero(int $numero) : void
     {
         $this->numero = $numero;
     }
