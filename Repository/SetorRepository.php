@@ -62,15 +62,10 @@ class SetorRepository
 
         $setor = $stmt->fetchObject('Setor');
 
-        if ($setor === false)
-        {
-            return null;
-        }
-
-        return $setor;
+        return $setor === false ? null : $setor;
     }
 
-    private function buscarSetores() : array
+    private function buscarSetores() : ?array
     {
         $query = "SELECT * FROM SETOR";
         $stmt = $this->bd->query($query);

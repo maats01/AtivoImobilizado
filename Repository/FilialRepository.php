@@ -110,15 +110,10 @@ class FilialRepository
 
         $filial = $stmt->fetchObject('Filial');
 
-        if ($filial === false)
-        {
-            return null;
-        }
-
-        return $filial;
+        return $filial === false ? null : $filial;
     }
 
-    private function buscarFiliais() : array
+    private function buscarFiliais() : ?array
     {
         $query = "SELECT * FROM FILIAL";
         $stmt = $this->bd->query($query);
@@ -130,7 +125,7 @@ class FilialRepository
             $filiais[] = $filial;
         }
 
-        return $filiais;
+        return count($filiais) > 0 ? $filiais : null;
     }
 }
 ?>

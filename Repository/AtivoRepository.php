@@ -116,15 +116,10 @@ class AtivoRepository
 
         $ativo = $stmt->fetchObject('Ativo');
 
-        if ($ativo === false)
-        {
-            return null;
-        }
-
-        return $ativo;
+        return $ativo === false ? null : $ativo;
     }
 
-    private function buscarAtivos() : array
+    private function buscarAtivos() : ?array
     {
         $query = "SELECT * FROM ATIVO";
         $stmt = $this->bd->query($query);
@@ -136,7 +131,7 @@ class AtivoRepository
             $ativos[] = $ativo;
         }
 
-        return $ativos;
+        return count($ativos) > 0 ? $ativos : null;
     }
 }
 ?>

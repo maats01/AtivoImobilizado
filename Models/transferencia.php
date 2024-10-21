@@ -3,61 +3,72 @@ require_once 'Utils/DateTimeUtil.php';
 
 class Transferencia
 {
-    private int $id_ativo;
-    private int $id_filial_origem;
-    private int $id_setor_origem;
-    private int $id_filial_destino;
-    private int $id_setor_destino;
+    private int $id;
+    private int $ativo_id;
+    private int $filial_origem_id;
+    private int $setor_origem_id;
+    private int $filial_destino_id;
+    private int $setor_destino_id;
     private ?DateTime $data_transferencia = null;
+
+    public function setId(int $id) : void
+    {
+        $this->id = $id;
+    }
+
+    public function getId() : int
+    {
+        return $this->id;
+    }
 
     public function setIdAtivo(int $id) : void
     {
-        $this->id_ativo = $id;
+        $this->ativo_id = $id;
     }
 
     public function getIdAtivo() : int
     {
-        return $this->id_ativo;
+        return $this->ativo_id;
     }
 
     public function setIdFilialOrigem(int $id) : void
     {
-        $this->id_filial_origem = $id;
+        $this->filial_origem_id = $id;
     }
 
     public function getIdFilialOrigem() : int
     {
-        return $this->id_filial_origem;
+        return $this->filial_origem_id;
     }
 
     public function setIdFilialDestino(int $id) : void
     {
-        $this->id_filial_destino = $id;
+        $this->filial_destino_id = $id;
     }
 
     public function getIdFilialDestino() : int
     {
-        return $this->id_filial_destino;
+        return $this->filial_destino_id;
     }
 
     public function setIdSetorOrigem(int $id) : void
     {
-        $this->id_setor_origem = $id;
+        $this->setor_origem_id = $id;
     }
 
     public function getIdSetorOrigem() : int
     {
-        return $this->id_setor_origem;
+        return $this->setor_origem_id;
     }
 
     public function setIdSetorDestino(int $id) : void
     {
-        $this->id_setor_destino = $id;
+        $this->setor_destino_id = $id;
     }
 
     public function getIdSetorDestino() : int
     {
-        return $this->id_setor_destino;
+        return $this->setor_destino_id;
     }
 
     public function setData(DateTime|string $data) : void

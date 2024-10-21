@@ -3,61 +3,62 @@ CREATE SCHEMA imobilizado;
 USE imobilizado;
 
 CREATE TABLE FILIAL(
-	ID int auto_increment primary key,
-    NOME_FILIAL varchar(255),
-    CNPJ varchar(14),
-    ESTADO char(2),
-    CIDADE varchar(255),
-    BAIRRO varchar(255),
-    RUA varchar(255),
-    NUMERO int
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    nome_filial VARCHAR(255),
+    cnpj VARCHAR(14),
+    estado CHAR(2),
+    cidade VARCHAR(255),
+    bairro VARCHAR(255),
+    rua VARCHAR(255),
+    numero INT
 );
 
 CREATE TABLE CATEGORIA(
-	ID int auto_increment primary key,
-    DESCRICAO varchar(255)
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(255)
 );
 
 CREATE TABLE SETOR(
-	ID int auto_increment primary key,
-    DESCRICAO_SETOR varchar(255)
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(255)
 );
 
 CREATE TABLE SETOR_FILIAL(
-    ID int auto_increment primary key,
-	SETOR_ID int not null,
-    FILIAL_ID int not null,
-    FOREIGN KEY (SETOR_ID) REFERENCES SETOR(ID),
-    FOREIGN KEY (FILIAL_ID) REFERENCES FILIAL(ID)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+	setor_id INT NOT NULL,
+    filial_id INT NOT NULL,
+    FOREIGN KEY (setor_id) REFERENCES SETOR(id),
+    FOREIGN KEY (filial_id) REFERENCES FILIAL(id)
 );
 
 CREATE TABLE ATIVO(
-	ID int auto_increment primary key,
-    FILIAL_ID int not null,
-    SETOR_ID int not null,
-    CATEGORIA_ID int not null,
-    DESCRICAO varchar(255) not null,
-    DATA_CADASTRO datetime not null,
-    DATA_AQUISICAO datetime not null,
-    VIDA_UTIL int,
-    CONDICAO int,
-    ESTADO_ATIVO int,
-    VALOR float not null,
-    FOREIGN KEY (FILIAL_ID) REFERENCES FILIAL(ID),
-    FOREIGN KEY (SETOR_ID) REFERENCES SETOR(ID),
-    FOREIGN KEY (CATEGORIA_ID) REFERENCES CATEGORIA(ID)
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    filial_id INT NOT NULL,
+    setor_id INT NOT NULL,
+    categoria_id INT NOT NULL,
+    descricao VARCHAR(255) NOT NULL,
+    data_cadastro DATETIME NOT NULL,
+    data_aquisicao DATETIME NOT NULL,
+    vida_util INT,
+    condicao INT,
+    estado_ativo INT,
+    valor FLOAT NOT NULL,
+    FOREIGN KEY (filial_id) REFERENCES FILIAL(id),
+    FOREIGN KEY (setor_id) REFERENCES SETOR(id),
+    FOREIGN KEY (categoria_id) REFERENCES CATEGORIA(id)
 );
 
 CREATE TABLE TRANSFERENCIA(
-	ATIVO_ID int not null,
-    FILIAL_ORIGEM_ID int not null,
-    SETOR_ORIGEM_ID int not null,
-    FILIAL_DESTINO_ID int not null,
-    SETOR_DESTINO_ID int not null,
-    DATA_TRANSFERENCIA datetime not null,
-    FOREIGN KEY (ATIVO_ID) REFERENCES ATIVO(ID),
-    FOREIGN KEY (FILIAL_ORIGEM_ID) REFERENCES FILIAL(ID),
-    FOREIGN KEY (SETOR_ORIGEM_ID) REFERENCES SETOR(ID),
-    FOREIGN KEY (FILIAL_DESTINO_ID) REFERENCES FILIAL(ID),
-    FOREIGN KEY (SETOR_DESTINO_ID) REFERENCES SETOR(ID)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+	ativo_id INT NOT NULL,
+    filial_origem_id INT NOT NULL,
+    setor_origem_id INT NOT NULL,
+    filial_destino_id INT NOT NULL,
+    setor_destino_id INT NOT NULL,
+    data_transferencia DATETIME,
+    FOREIGN KEY (ativo_id) REFERENCES ATIVO(id),
+    FOREIGN KEY (filial_origem_id) REFERENCES FILIAL(id),
+    FOREIGN KEY (setor_origem_id) REFERENCES SETOR(id),
+    FOREIGN KEY (filial_destino_id) REFERENCES FILIAL(id),
+    FOREIGN KEY (setor_destino_id) REFERENCES SETOR(id)
 );

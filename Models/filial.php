@@ -2,8 +2,8 @@
 class Filial
 {
     private int $id;
-    private string $cnpj;
     private string $nome_filial;
+    private string $cnpj;
     private string $estado;
     private string $cidade;
     private string $bairro;

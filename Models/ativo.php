@@ -4,12 +4,12 @@ require_once 'Utils/DateTimeUtil.php';
 class Ativo 
 {
     private int $id;
-    private int $setor_id;
     private int $filial_id;
+    private int $setor_id;
     private int $categoria_id;
     private string $descricao;
-    private ?DateTime $data_aquisicao = null;
     private ?DateTime $data_cadastro = null;
+    private ?DateTime $data_aquisicao = null;
     private int $vida_util;
     private bool $condicao;
     private int $estado_ativo;

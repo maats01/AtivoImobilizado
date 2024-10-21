@@ -63,15 +63,10 @@ class CategoriaRepository
         
         $categoria = $stmt->fetchObject('Categoria');
 
-        if ($categoria === false)
-        {
-            return null;
-        }
-
-        return $categoria;
+        return $categoria === false ? null : $categoria;
     }
 
-    private function buscarCategorias() : array
+    private function buscarCategorias() : ?array
     {
         $query = "SELECT * FROM CATEGORIAS";
         $stmt = $this->bd->query($query);
@@ -83,7 +78,7 @@ class CategoriaRepository
             $categorias[] = $categoria;
         }
         
-        return $categorias;
+        return count($categorias) > 0 ? $categorias : null;
     }
 }
 ?>
