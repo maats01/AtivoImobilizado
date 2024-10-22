@@ -40,7 +40,7 @@ CREATE TABLE ATIVO(
     data_cadastro DATETIME NOT NULL,
     data_aquisicao DATETIME NOT NULL,
     vida_util INT,
-    condicao INT,
+    condicao BOOL,
     estado_ativo INT,
     valor FLOAT NOT NULL,
     FOREIGN KEY (filial_id) REFERENCES FILIAL(id),

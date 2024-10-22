@@ -12,7 +12,7 @@ class SetorRepository
     {
         $descricao = $setor->getDescricao();
 
-        $query = "INSERT INTO SETOR (DESCRICAO_SETOR) VALUES ('$descricao')";
+        $query = "INSERT INTO SETOR (DESCRICAO) VALUES ('$descricao')";
 
         $this->bd->query($query);
     }
@@ -24,7 +24,7 @@ class SetorRepository
 
         $query = "
             UPDATE SETOR SET
-                DESCRICAO_SETOR = :descricao
+                DESCRICAO = :descricao
             WHERE ID = :id
         ";
 
