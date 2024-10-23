@@ -9,7 +9,7 @@ class Transferencia
     private int $setor_origem_id;
     private int $filial_destino_id;
     private int $setor_destino_id;
-    private ?DateTime $data_transferencia = null;
+    private $data_transferencia = null;
 
     public function setId(int $id) : void
     {
@@ -76,9 +76,14 @@ class Transferencia
         $this->data_transferencia = DateTimeUtil::convertToDateTime($data);
     }
 
-    public function getData() : ?string
+    public function getData() : ?DateTime
     {
-        return $this->data_transferencia?->format('Y-m-d H:i:s');
+        if (is_object($this->data_transferencia))
+        {
+            return $this->data_transferencia;
+        }
+
+        return new DateTime($this->data_transferencia);
     }
 }
 ?>

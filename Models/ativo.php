@@ -8,8 +8,8 @@ class Ativo
     private int $setor_id;
     private int $categoria_id;
     private string $descricao;
-    private ?DateTime $data_cadastro = null;
-    private ?DateTime $data_aquisicao = null;
+    private $data_cadastro = null;
+    private $data_aquisicao = null;
     private int $vida_util;
     private bool $condicao;
     private int $estado_ativo;
@@ -70,9 +70,14 @@ class Ativo
         $this->data_cadastro = DateTimeUtil::convertToDateTime($data);
     }
 
-    public function getDataCadastro() : ?string
-    {
-        return $this->data_cadastro?->format('Y-m-d H:i:s');
+    public function getDataCadastro() : ?DateTime
+    {   
+        if (is_object($this->data_cadastro))
+        {
+            return $this->data_cadastro;
+        }
+
+        return new DateTime($this->data_cadastro);
     }
 
     public function setDataAquisicao(DateTime|string $data) : void
@@ -80,9 +85,14 @@ class Ativo
         $this->data_aquisicao = DateTimeUtil::convertToDateTime($data);
     }
 
-    public function getDataAquisicao() : ?string
+    public function getDataAquisicao() : ?DateTime
     {
-        return $this->data_aquisicao?->format('Y-m-d H:i:s');
+        if (is_object($this->data_aquisicao))
+        {
+            return $this->data_aquisicao;
+        }
+
+        return new DateTime($this->data_aquisicao);
     }
 
     public function setVidaUtil(int $v) : void

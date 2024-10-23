@@ -17,6 +17,11 @@ class TransferenciaRepository
         $id_setor_dest = $transf->getIdSetorDestino();
         $data_transf = $transf->getData();
 
+        if (is_object($data_transf))
+        {
+            $data_transf = $data_transf->format('Y-m-d H:i:s');
+        }
+
         $query = "
             INSERT INTO TRANSFERENCIA (ATIVO_ID, FILIAL_ORIGEM_ID, SETOR_ORIGEM_ID, FILIAL_DESTINO_ID, SETOR_DESTINO_ID, DATA_TRANSFERENCIA)
             VALUES
@@ -50,6 +55,11 @@ class TransferenciaRepository
         $id_setor_origem = $transf->getIdSetorOrigem();
         $id_setor_dest = $transf->getIdSetorDestino();
         $data_transf = $transf->getData();
+
+        if (is_object($data_transf))
+        {
+            $data_transf = $data_transf->format('Y-m-d H:i:s');
+        }
 
         $query = "
             UPDATE TRANSFERENCIA SET
@@ -102,8 +112,13 @@ class TransferenciaRepository
         $stmt->execute([':id' => $id]);
 
         $transf = $stmt->fetchObject('Transferencia');
+        if ($transf !== false)
+        {
+            $transf->setData($transf->getData());
 
-        return $transf === false ? null : $transf;
+            return $transf;
+        }
+        return null;
     }
 
     private function buscarTudo() : ?array
@@ -116,6 +131,7 @@ class TransferenciaRepository
 
         while ($transf = $stmt->fetchObject('Transferencia'))
         {
+            $transf->setData($transf->getData());
             $transferencias[] = $transf;
         }
 

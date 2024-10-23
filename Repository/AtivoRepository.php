@@ -1,4 +1,7 @@
 <?php 
+require_once 'Utils/DateTimeUtil.php';
+require_once 'Models/Ativo.php';
+
 class AtivoRepository
 {
     private $bd;
@@ -20,6 +23,16 @@ class AtivoRepository
         $condicao = $ativo->getCondicao();
         $estado = $ativo->getEstadoAtivo();
         $valor = $ativo->getValor();
+
+        if (is_object($data_cadastro))
+        {
+            $data_cadastro = $data_cadastro->format('Y-m-d H:i:s');   
+        }
+
+        if (is_object($data_aquisicao))
+        {
+            $data_aquisicao = $data_aquisicao->format('Y-m-d H:i:s');
+        }
 
         $query = "
             INSERT INTO ATIVO (FILIAL_ID, SETOR_ID, CATEGORIA_ID, DESCRICAO, DATA_CADASTRO, DATA_AQUISICAO, VIDA_UTIL, CONDICAO, ESTADO_ATIVO, VALOR)
@@ -55,6 +68,16 @@ class AtivoRepository
         $condicao = $ativo->getCondicao();
         $estado = $ativo->getEstadoAtivo();
         $valor = $ativo->getValor();
+
+        if (is_object($data_cadastro))
+        {
+            $data_cadastro = $data_cadastro->format('Y-m-d H:i:s');   
+        }
+
+        if (is_object($data_aquisicao))
+        {
+            $data_aquisicao = $data_aquisicao->format('Y-m-d H:i:s');
+        }
 
         $query = "
             UPDATE ATIVO SET
@@ -115,8 +138,15 @@ class AtivoRepository
         $stmt->execute([':id' => $id]);
 
         $ativo = $stmt->fetchObject('Ativo');
+        if ($ativo !== false) 
+        {
+            $ativo->setDataCadastro($ativo->getDataCadastro());
+            $ativo->setDataAquisicao($ativo->getDataAquisicao());
 
-        return $ativo === false ? null : $ativo;
+            return $ativo;
+        }
+
+        return null;
     }
 
     private function buscarAtivos() : ?array
@@ -128,6 +158,9 @@ class AtivoRepository
 
         while ($ativo = $stmt->fetchObject('Ativo'))
         {
+            $ativo->setDataCadastro($ativo->getDataCadastro());
+            $ativo->setDataAquisicao($ativo->getDataAquisicao());
+            
             $ativos[] = $ativo;
         }
 
