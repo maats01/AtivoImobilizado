@@ -1,5 +1,5 @@
 <?php
-require_once 'Utils/DateTimeUtil.php';
+require_once 'Utils/utils.php';
 
 class Ativo 
 {
@@ -67,7 +67,7 @@ class Ativo
 
     public function setDataCadastro(DateTime|string $data) : void
     {
-        $this->data_cadastro = DateTimeUtil::convertToDateTime($data);
+        $this->data_cadastro = convertToDateTime($data);
     }
 
     public function getDataCadastro() : ?DateTime
@@ -82,7 +82,7 @@ class Ativo
 
     public function setDataAquisicao(DateTime|string $data) : void
     {
-        $this->data_aquisicao = DateTimeUtil::convertToDateTime($data);
+        $this->data_aquisicao = convertToDateTime($data);
     }
 
     public function getDataAquisicao() : ?DateTime

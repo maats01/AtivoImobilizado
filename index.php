@@ -1,15 +1,32 @@
 <?php 
 require "config.php";
 require "Utils/Banco.php";
+require "Utils/utils.php";
+// $path = __DIR__ . '/Models/*.php';
+// foreach (glob($path) as $file) 
+// {
+//     require_once $file;
+// }
+// $path = __DIR__ . '/Repository/*.php';
+// foreach (glob($path) as $file)
+// {
+//     require_once $file;
+// }
 
-$path = __DIR__ . '/Models/*.php';
-foreach (glob($path) as $file) 
+$rota = "Ativo";
+
+if (array_key_exists("rota", $_GET))
 {
-    require_once $file;
+    $rota = (string) $_GET["rota"];
 }
-$path = __DIR__ . '/Repository/*.php';
-foreach (glob($path) as $file)
+
+if (is_file("Controllers/{$rota}Controller.php"))
 {
-    require_once $file;
+    require "Controllers/{$rota}Controller.php";
 }
+else
+{
+    require "Controllers/404.php";
+}
+
 ?>
