@@ -1,14 +1,14 @@
 <?php
 class Filial
 {
-    private int $id;
-    private string $nome_filial;
-    private string $cnpj;
-    private string $estado;
-    private string $cidade;
-    private string $bairro;
-    private string $rua;
-    private int $numero;
+    private int $id = 0;
+    private string $nome_filial = '';
+    private string $cnpj = '';
+    private string $estado = '';
+    private string $cidade = '';
+    private string $bairro = '';
+    private string $rua = '';
+    private int $numero = 0;
 
     public function setId(int $id) : void
     {

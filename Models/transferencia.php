@@ -1,5 +1,5 @@
 <?php 
-require_once 'Utils/DateTimeUtil.php';
+require_once 'Utils/utils.php';
 
 class Transferencia
 {
@@ -73,7 +73,7 @@ class Transferencia
 
     public function setData(DateTime|string $data) : void
     {
-        $this->data_transferencia = DateTimeUtil::convertToDateTime($data);
+        $this->data_transferencia = convertToDateTime($data);
     }
 
     public function getData() : ?DateTime

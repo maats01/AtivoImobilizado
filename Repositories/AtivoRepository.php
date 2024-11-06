@@ -1,5 +1,4 @@
 <?php 
-require_once 'Utils/DateTimeUtil.php';
 require_once 'Models/Ativo.php';
 
 class AtivoRepository
