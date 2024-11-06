@@ -1,5 +1,5 @@
 <form method="post">
-    <fieldset>
+    <fieldset class="campos">
         <legend>Nova filial</legend>
         <label>
             Nome:

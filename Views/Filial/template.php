@@ -2,7 +2,6 @@
     <head>
         <meta charset="utf-8" />
         <title>Filiais</title>
-        <link rel="stylesheet" href="assets/style.css">
     </head>
     <body>
         <div id="bloco_principal">

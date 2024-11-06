@@ -5,6 +5,8 @@ require "Repositories/FilialRepository.php";
 $filialRepository = new FilialRepository($pdo);
 $filial = new Filial();
 
+$exibir_tabela = true;
+
 // inserir nova filial
 if (tem_post() & !isset($_GET['edit_id']))
 {
@@ -51,6 +53,7 @@ if (tem_post() & !isset($_GET['edit_id']))
 // atualizando filial
 if (isset($_GET['edit_id']))
 {
+    $exibir_tabela = false;
     $id = intval($_GET['edit_id']);
     $filial = $filialRepository->buscar($id);
     if (tem_post())
@@ -95,6 +98,7 @@ if (isset($_GET['edit_id']))
         die();
     }
 }
+
 // removendo filial
 if (array_key_exists('delete_id', $_GET))
 {
@@ -103,8 +107,6 @@ if (array_key_exists('delete_id', $_GET))
     header('Location: index.php?rota=Filial');
     die();
 }
-
-$exibir_tabela = true;
 
 $filiais = $filialRepository->buscar();
 require __DIR__ . "/../Views/Filial/template.php";
