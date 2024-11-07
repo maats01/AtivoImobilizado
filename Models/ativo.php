@@ -3,17 +3,17 @@ require_once 'Utils/utils.php';
 
 class Ativo 
 {
-    private int $id;
-    private int $filial_id;
-    private int $setor_id;
-    private int $categoria_id;
-    private string $descricao;
-    private $data_cadastro;
-    private $data_aquisicao;
-    private int $vida_util;
-    private int $condicao;
-    private bool $estado_ativo;
-    private float $valor;
+    private int $id = 0;
+    private int $filial_id = 0;
+    private int $setor_id = 0;
+    private int $categoria_id = 0;
+    private string $descricao = '';
+    private $data_cadastro = '';
+    private $data_aquisicao = '';
+    private int $vida_util = 0;
+    private int $condicao = 0;
+    private int $estado_ativo = 1;
+    private float $valor = 0;
 
     public function setId(int $id) : void
     {

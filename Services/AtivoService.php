@@ -2,6 +2,7 @@
 require __DIR__ . '/../Repositories/SetorRepository.php';
 require __DIR__ . '/../Repositories/CategoriaRepository.php';
 require __DIR__ . '/../Repositories/FilialRepository.php';
+
 class AtivoService
 {
     private $filialRepository;
@@ -26,6 +27,21 @@ class AtivoService
             'categorias' => $categorias,
             'setores' => $setores
         ];
+    }
+
+    public function nome_filial($id)
+    {
+        return $this->filialRepository->buscar($id)->getNome();
+    }
+
+    public function nome_categoria($id)
+    {
+        return $this->categoriaRepository->buscar($id)->getDescricao();
+    }
+
+    public function nome_setor($id)
+    {
+        return $this->setorRepository->buscar($id)->getDescricao();
     }
 }
 ?>

@@ -3,6 +3,7 @@ require "Models/Filial.php";
 require "Repositories/FilialRepository.php";
 
 $filialRepository = new FilialRepository($pdo);
+$filial = new Filial();
 
 $exibir_tabela = true;
 

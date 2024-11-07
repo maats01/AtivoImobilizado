@@ -34,7 +34,7 @@ function traduz_data_para_exibir($data)
     return $data_exibir;
 }
 
-function converte_condicao_para_exibir($condicao)
+function traduz_condicao_para_exibir($condicao)
 {
     switch ($condicao)
     {
@@ -56,5 +56,22 @@ function converte_condicao_para_exibir($condicao)
     }
 
     return null;
+}
+
+function traduz_data_para_banco($data)
+{
+    if ($data == "") {
+        return "";
+    }
+
+    $dados = explode("/", $data);
+
+    if (count($dados) != 3) {
+        return $data;
+    }
+
+    $data_mysql = "{$dados[2]}-{$dados[1]}-{$dados[0]}";
+
+    return $data_mysql;
 }
 ?>

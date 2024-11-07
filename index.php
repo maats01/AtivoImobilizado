@@ -4,6 +4,8 @@ require 'Utils/Banco.php';
 require 'Utils/utils.php';
 require 'Views/Shared/navbar.php';
 
+date_default_timezone_set('America/Sao_Paulo');
+
 $rota = "Ativo";
 
 if (array_key_exists("rota", $_GET))
