@@ -33,4 +33,28 @@ function traduz_data_para_exibir($data)
 
     return $data_exibir;
 }
+
+function converte_condicao_para_exibir($condicao)
+{
+    switch ($condicao)
+    {
+        case 1:
+            return 'Excelente';
+            break;
+        case 2:
+            return 'Bom';
+            break;
+        case 3:
+            return 'Regular';
+            break;
+        case 4:
+            return 'Ruim';
+            break;
+        case 5:
+            return 'Péssimo';
+            break;
+    }
+
+    return null;
+}
 ?>

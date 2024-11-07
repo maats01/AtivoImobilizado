@@ -46,7 +46,7 @@
         </label>
         <label>
             Data de Aquisição:
-            <input type="date" name="data_aquisicao" value="<?php echo isset($ativo) ? htmlentities(traduz_data_para_exibir($ativo->getDataAquisicao())) : ''; ?>">
+            <input type="datetime-local" name="data_aquisicao" value="<?php echo isset($ativo) ? htmlentities(traduz_data_para_exibir($ativo->getDataAquisicao())) : ''; ?>">
         </label>
         <label>
             Vida Útil:
@@ -54,7 +54,7 @@
         </label>
         <label>
             Condição:
-            <input type="text" name="condicao" value="<?php echo isset($ativo) ? htmlentities($ativo->getCondicao()) : ''; ?>">
+            
         </label>
         <label>
             Estado do Ativo:

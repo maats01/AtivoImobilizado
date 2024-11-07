@@ -11,8 +11,8 @@ class Ativo
     private $data_cadastro;
     private $data_aquisicao;
     private int $vida_util;
-    private bool $condicao;
-    private int $estado_ativo;
+    private int $condicao;
+    private bool $estado_ativo;
     private float $valor;
 
     public function setId(int $id) : void
@@ -105,22 +105,22 @@ class Ativo
         return $this->vida_util;
     }
 
-    public function setCondicao(bool $stat) : void
+    public function setCondicao(int $stat) : void
     {
         $this->condicao = $stat;
     }
 
-    public function getCondicao() : bool
+    public function getCondicao() : int
     {
         return $this->condicao;
     }
 
-    public function setEstadoAtivo(int $estado) : void
+    public function setEstadoAtivo(bool $estado) : void
     {
         $this->estado_ativo = $estado;
     }
 
-    public function getEstadoAtivo() : int
+    public function getEstadoAtivo() : bool
     {
         return $this->estado_ativo;
     }

@@ -1,8 +1,8 @@
 <?php 
-require "config.php";
-require "Utils/Banco.php";
-require "Utils/utils.php";
-require('Views/Shared/navbar.php');
+require 'config.php';
+require 'Utils/Banco.php';
+require 'Utils/utils.php';
+require 'Views/Shared/navbar.php';
 
 $rota = "Ativo";
 
