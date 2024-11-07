@@ -1,4 +1,6 @@
 <?php 
+require_once __DIR__ . '/../Models/setor.php';
+
 class SetorRepository
 {
     private $bd;

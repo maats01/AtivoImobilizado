@@ -1,4 +1,6 @@
 <?php 
+require_once __DIR__ . '/../Models/categoria.php';
+
 class CategoriaRepository
 {
     private $bd;
@@ -68,7 +70,7 @@ class CategoriaRepository
 
     private function buscarCategorias() : ?array
     {
-        $query = "SELECT * FROM CATEGORIAS";
+        $query = "SELECT * FROM CATEGORIA";
         $stmt = $this->bd->query($query);
 
         $categorias = [];

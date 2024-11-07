@@ -1,5 +1,5 @@
 <?php 
-require_once 'Models/Ativo.php';
+require_once __DIR__ . '/../Models/ativo.php';
 
 class AtivoRepository
 {

@@ -8,8 +8,8 @@ class Ativo
     private int $setor_id;
     private int $categoria_id;
     private string $descricao;
-    private $data_cadastro = null;
-    private $data_aquisicao = null;
+    private $data_cadastro;
+    private $data_aquisicao;
     private int $vida_util;
     private bool $condicao;
     private int $estado_ativo;

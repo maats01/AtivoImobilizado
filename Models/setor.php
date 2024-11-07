@@ -1,8 +1,8 @@
 <?php 
 class Setor
 {
-    private int $id = 0;
-    private string $descricao = '';
+    private int $id;
+    private string $descricao;
 
     public function setId(int $id) : void
     {
