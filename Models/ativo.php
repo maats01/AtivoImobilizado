@@ -8,8 +8,8 @@ class Ativo
     private int $setor_id = 0;
     private int $categoria_id = 0;
     private string $descricao = '';
-    private $data_cadastro = '';
-    private $data_aquisicao = '';
+    private $data_cadastro = null;
+    private $data_aquisicao = null;
     private int $vida_util = 0;
     private int $condicao = 0;
     private int $estado_ativo = 1;
@@ -115,12 +115,12 @@ class Ativo
         return $this->condicao;
     }
 
-    public function setEstadoAtivo(bool $estado) : void
+    public function setEstadoAtivo(int $estado) : void
     {
         $this->estado_ativo = $estado;
     }
 
-    public function getEstadoAtivo() : bool
+    public function getEstadoAtivo() : int
     {
         return $this->estado_ativo;
     }

@@ -40,7 +40,7 @@
                 <?php echo traduz_condicao_para_exibir($ativo->getCondicao()); ?>
             </td>
             <td>
-                <?php echo $ativo->getEstadoAtivo() === 1 ? 'Ativo' : 'Baixado'; ?>
+                <?php echo $ativo->getEstadoAtivo() == 1 ? 'Ativo' : 'Baixado'; ?>
             </td>
             <td>
                 <?php echo 'R$ ' . $ativo->getValor(); ?>

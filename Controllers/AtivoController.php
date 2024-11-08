@@ -115,9 +115,14 @@ if (isset($_GET['edit_id']))
         {
             $ativo->setValor(floatval($_POST['valor']));
         }
-    
-        $ativoRepository->salvar($ativo);
-        header('Location: index.php?rota=Filial');
+
+        if (array_key_exists('estado_ativo', $_POST))
+        {
+            $ativo->setEstadoAtivo(intval($_POST['estado_ativo']));
+        }
+        
+        $ativoRepository->atualizar($ativo);
+        header('Location: index.php?rota=Ativo');
         die();
     }
 
@@ -128,7 +133,7 @@ if (isset($_GET['delete_id']))
 {
     $id = intval($_GET['delete_id']);
     $ativoRepository->remover($id);
-    header('Location: index.php?rota=Filial');
+    header('Location: index.php?rota=Ativo');
     die();
 }
 

@@ -47,7 +47,7 @@
 
         <label>
             Data de Aquisição:
-            <input type="datetime-local" name="data_aquisicao" value="<?php echo htmlentities(traduz_data_para_exibir($ativo->getDataAquisicao())); ?>">
+            <input type="date" name="data_aquisicao" value="<?php echo $ativo->getDataAquisicao() !== '' ? htmlentities(traduz_data_para_exibir($ativo->getDataAquisicao())) : ''; ?>">
         </label>
 
         <label>
