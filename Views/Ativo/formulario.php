@@ -2,7 +2,7 @@
     <fieldset>
         <legend>Novo ativo</legend>
         <label>
-            Descrição: 
+            Descrição:
             <input type="text" name="descricao" value="<?php echo htmlentities($ativo->getDescricao()); ?>">
         </label>
 
@@ -10,8 +10,8 @@
             Filial:
             <select name="filial">
                 <option value=""></option>
-                <?php foreach ($formData['filiais'] as $filial) : ?> 
-                    <option value="<?php echo $filial->getId(); ?>" 
+                <?php foreach ($formData['filiais'] as $filial) : ?>
+                    <option value="<?php echo $filial->getId(); ?>"
                         <?php echo isset($ativo) && $ativo->getFilialId() == $filial->getId() ? 'selected' : ''; ?>>
                         <?php echo $filial->getNome(); ?>
                     </option>
@@ -22,11 +22,11 @@
         <label>
             Setor:
             <select name="setor">
-            <option value=""></option>
+                <option value=""></option>
                 <?php foreach ($formData['setores'] as $setor) : ?>
-                    <option value="<?php echo $setor->getId(); ?>" 
-                    <?php echo isset($ativo) && $ativo->getSetorId() == $setor->getId() ? 'selected' : ''; ?>>
-                    <?php echo $setor->getDescricao(); ?>
+                    <option value="<?php echo $setor->getId(); ?>"
+                        <?php echo isset($ativo) && $ativo->getSetorId() == $setor->getId() ? 'selected' : ''; ?>>
+                        <?php echo $setor->getDescricao(); ?>
                     </option>
                 <?php endforeach; ?>
             </select>
@@ -36,18 +36,18 @@
             Categoria:
             <select name="categoria">
                 <option value=""></option>
-                    <?php foreach ($formData['categorias'] as $categoria) : ?>
-                        <option value="<?php echo $categoria->getId(); ?>" 
+                <?php foreach ($formData['categorias'] as $categoria) : ?>
+                    <option value="<?php echo $categoria->getId(); ?>"
                         <?php echo isset($ativo) && $ativo->getCategoriaId() == $categoria->getId() ? 'selected' : ''; ?>>
                         <?php echo $categoria->getDescricao(); ?>
-                        </option>
-                    <?php endforeach; ?>
+                    </option>
+                <?php endforeach; ?>
             </select>
         </label>
 
         <label>
             Data de Aquisição:
-            <input type="date" name="data_aquisicao" value="<?php echo $ativo->getDataAquisicao() !== '' ? htmlentities(traduz_data_para_exibir($ativo->getDataAquisicao())) : ''; ?>">
+            <input type="date" name="data_aquisicao" value="<?php echo $ativo->getDataAquisicao() !== '' ? $ativo->getDataAquisicao()->format('Y-m-d') : ''; ?>">
         </label>
 
         <label>
@@ -67,10 +67,11 @@
             </select>
         </label>
 
-        <label>
-            Estado do Ativo:
-            <input type="text" name="estado_ativo" value="<?php echo isset($ativo) ? htmlentities($ativo->getEstadoAtivo()) : ''; ?>">
-        </label>
+        <div>
+            <label>Estado do Ativo:</label>
+            <label><input type="radio" name="estado_ativo" value="1" <?php echo isset($ativo) && $ativo->getEstadoAtivo() == 1 ? 'checked' : '' ?>> Ativo</label>
+            <label><input type="radio" name="estado_ativo" value="0" <?php echo isset($ativo) && $ativo->getEstadoAtivo() == 0 ? 'checked' : '' ?>> Inativo</label>
+        </div>
 
         <label>
             Valor:

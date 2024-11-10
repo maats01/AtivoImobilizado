@@ -1,5 +1,6 @@
 <table>
     <tr>
+        <th>ID</th>
         <th>Ativo</th>
         <th>Filial</th>
         <th>Setor</th>
@@ -14,9 +15,10 @@
     <?php foreach ($ativos as $ativo) : ?>
         <tr>
             <td>
-                <a href="ativo.php?id=<?php echo $ativo->getId(); ?>">
-                    <?php echo $ativo->getDescricao(); ?>
-                </a>
+                <?php echo $ativo->getId(); ?>
+            </td>
+            <td>
+                <?php echo $ativo->getDescricao(); ?>
             </td>
             <td>
                 <?php echo $ativoService->nome_filial($ativo->getFilialId()); ?>

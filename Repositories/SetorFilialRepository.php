@@ -48,12 +48,12 @@ class SetorFilialRepository
         ]);
     }
 
-    public function remover(int $id) : bool
+    public function remover(int $filial_id, int $setor_id) : bool
     {
-        $query = "DELETE FROM SETOR_FILIAL WHERE ID = :id";
+        $query = "DELETE FROM SETOR_FILIAL WHERE filial_id = :id1 AND setor_id = :id2";
 
         $stmt = $this->bd->prepare($query);
-        return $stmt->execute([':id' => $id]);
+        return $stmt->execute([':id1' => $filial_id, 'id2' => $setor_id]);
     }
 
     public function buscar(int $filial_id = 0) : ?array
@@ -66,6 +66,22 @@ class SetorFilialRepository
         {
             return $this->buscarTudo();
         }
+    }
+
+    public function setoresPorFilial($filial_id) : ?array
+    {
+        $query = "SELECT * FROM SETOR_FILIAL WHERE FILIAL_ID = :filial_id";
+        $stmt = $this->bd->prepare($query);
+        $stmt->execute([':filial_id' => $filial_id]);
+
+        $setores_filial = [];
+
+        while($setor_filial = $stmt->fetchObject('SetorFilial'))
+        {
+            $setores_filial[] = $setor_filial->getSetorId();
+        }
+
+        return count($setores_filial) > 0 ? $setores_filial : null;  
     }
 
     private function buscarPorFilial(int $filial_id) : ?array

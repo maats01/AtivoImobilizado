@@ -1,5 +1,6 @@
 <table>
     <tr>
+        <th>ID</th>
         <th>Filial</th>
         <th>Cnpj</th>
         <th>Estado</th>
@@ -11,9 +12,10 @@
     <?php foreach ($filiais as $filial) : ?>
         <tr>
             <td>
-                <a href="filial.php?id=<?php echo $filial->getId(); ?>">
-                    <?php echo $filial->getNome(); ?>
-                </a>
+                <?php echo $filial->getId(); ?>
+            </td>
+            <td>
+                <?php echo $filial->getNome(); ?>
             </td>
             <td>
                 <?php echo $filial->getCnpj(); ?>
@@ -39,6 +41,9 @@
                 </a>
                 <a href="?rota=Filial&delete_id=<?php echo $filial->getId(); ?>">
                     Remover
+                </a>
+                <a href="?rota=Filial&detail_id=<?php echo $filial->getId(); ?>">
+                    Detalhes
                 </a>
             </td>
         </tr>

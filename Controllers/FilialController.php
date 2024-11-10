@@ -1,14 +1,16 @@
 <?php 
-require "Models/Filial.php";
-require "Repositories/FilialRepository.php";
+require_once 'Models/Filial.php';
+require_once 'Repositories/FilialRepository.php';
+require_once 'Services/FilialService.php';
 
+$filialService = new FilialService($pdo);
 $filialRepository = new FilialRepository($pdo);
 $filial = new Filial();
 
 $exibir_tabela = true;
 
-// inserir nova filial
-if (tem_post() & !isset($_GET['edit_id']))
+// inserindo nova filial
+if (tem_post() && !isset($_GET['edit_id']) && !isset($_GET['detail_id']))
 {
     if (array_key_exists('nome', $_POST))
     {
@@ -46,8 +48,7 @@ if (tem_post() & !isset($_GET['edit_id']))
     }
 
     $filialRepository->salvar($filial);
-    header('Location: index.php?rota=Filial');
-    die();
+    redirecionar('Filial');
 }
 
 // atualizando filial
@@ -94,8 +95,7 @@ if (isset($_GET['edit_id']))
         }
         
         $filialRepository->atualizar($filial);
-        header('Location: index.php?rota=Filial');
-        die();
+        redirecionar('Filial');
     }
 }
 
@@ -104,7 +104,26 @@ if (array_key_exists('delete_id', $_GET))
 {
     $id = intval($_GET['delete_id']);
     $filialRepository->remover($id);
-    header('Location: index.php?rota=Filial');
+    redirecionar('Filial');
+}
+
+// detalhes da filial
+if (isset($_GET['detail_id']))
+{
+    $id = intval($_GET['detail_id']);
+    $filial = $filialRepository->buscar($id);
+    $setores = $filialService->buscar_setores();
+    $setores_atuais = $filialService->buscar_setores_por_filial($id);
+    require __DIR__ . "/../Views/Filial/filial_template.php";
+
+    if (tem_post())
+    {
+        $setores_selecionados = isset($_POST['setores']) ? $_POST['setores'] : [];
+        $filialService->atualizar_setores_filial($id, $setores_selecionados, $setores_atuais);
+
+        redirecionar("Filial&detail_id={$id}");
+    }
+
     die();
 }
 

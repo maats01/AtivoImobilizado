@@ -9,7 +9,7 @@ $ativo = new Ativo();
 
 $exibir_tabela = true;
 
-// inserir novo ativo
+// inserindo novo ativo
 if (tem_post() && !isset($_GET['edit_id']))
 {    
     if (array_key_exists('descricao', $_POST))
@@ -59,11 +59,10 @@ if (tem_post() && !isset($_GET['edit_id']))
     
     $ativo->setDataCadastro(date('Y-m-d H:i:s'));
     $ativoRepository->salvar($ativo);
-    header('Location: index.php?rota=Filial');
-    die();
+    redirecionar('Ativo');
 }
 
-// editar ativo
+// atualizando ativo
 if (isset($_GET['edit_id']))
 {
     $exibir_tabela = false;
@@ -122,19 +121,17 @@ if (isset($_GET['edit_id']))
         }
         
         $ativoRepository->atualizar($ativo);
-        header('Location: index.php?rota=Ativo');
-        die();
+        redirecionar('Ativo');
     }
 
 }
 
-// deletar ativo
+// removendo ativo
 if (isset($_GET['delete_id']))
 {
     $id = intval($_GET['delete_id']);
     $ativoRepository->remover($id);
-    header('Location: index.php?rota=Ativo');
-    die();
+    redirecionar('Ativo');
 }
 
 $formData = $ativoService->dados_para_form();
