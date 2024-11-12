@@ -43,6 +43,7 @@ if (tem_post() && !isset($_GET['edit_id']))
     }
 
     $transfRepository->salvar($transf);
+    $transfService->atualizar_ativo($transf->getIdAtivo(), $transf->getIdFilialDestino(), $transf->getIdSetorDestino());
     redirecionar('Transferencia');
 }
 
@@ -86,6 +87,7 @@ if (isset($_GET['edit_id']))
         }
 
         $transfRepository->atualizar($transf);
+        $transfService->atualizar_ativo($transf->getIdAtivo(), $transf->getIdFilialDestino(), $transf->getIdSetorDestino());
         redirecionar('Transferencia');
     }
 }
@@ -94,6 +96,8 @@ if (isset($_GET['edit_id']))
 if (isset($_GET['delete_id']))
 {
     $id = intval($_GET['delete_id']);
+    $transf = $transfRepository->buscar($id);
+    $transfService->atualizar_ativo($transf->getIdAtivo(), $transf->getIdFilialOrigem(), $transf->getIdSetorOrigem());
     $transfRepository->remover($id);
     redirecionar('Transferencia');
 }
