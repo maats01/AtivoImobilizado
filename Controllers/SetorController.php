@@ -1,6 +1,6 @@
 <?php 
-require "Models/setor.php";
-require "Repositories/SetorRepository.php";
+require_once 'Models/setor.php';
+require_once 'Repositories/SetorRepository.php';
 
 $setorRepository = new SetorRepository($pdo);
 $setor = new Setor();
@@ -45,6 +45,6 @@ if (isset($_GET['delete_id']))
     redirecionar('Setor');
 }
 
-$setores = $setorRepository->buscar();
+$setores = $setorRepository->buscar() ?? [];
 require __DIR__ . "/../Views/Setor/template.php";
 ?>

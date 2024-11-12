@@ -18,9 +18,9 @@ class AtivoService
 
     public function dados_para_form()
     {
-        $filiais = $this->filialRepository->buscar();
-        $categorias = $this->categoriaRepository->buscar();
-        $setores = $this->setorRepository->buscar();
+        $filiais = $this->filialRepository->buscar() ?? [];
+        $categorias = $this->categoriaRepository->buscar() ?? [];
+        $setores = $this->setorRepository->buscar() ?? [];
 
         return [
             'filiais' => $filiais,

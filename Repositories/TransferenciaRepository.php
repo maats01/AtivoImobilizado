@@ -94,7 +94,7 @@ class TransferenciaRepository
         return $stmt->execute([':id' => $id]);
     }
 
-    public function buscar(int $id) : Transferencia|array|null
+    public function buscar(int $id = 0) : Transferencia|array|null
     {
         if ($id > 0)
         {

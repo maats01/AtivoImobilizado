@@ -1,7 +1,7 @@
 <?php 
-require "Models/Ativo.php";
-require "Repositories/AtivoRepository.php";
-require __DIR__ . '/../Services/AtivoService.php';
+require_once 'Models/Ativo.php';
+require_once 'Repositories/AtivoRepository.php';
+require_once __DIR__ . '/../Services/AtivoService.php';
 
 $ativoService = new AtivoService($pdo);
 $ativoRepository = new AtivoRepository($pdo);

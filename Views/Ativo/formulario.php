@@ -3,12 +3,12 @@
         <legend>Novo ativo</legend>
         <label>
             Descrição:
-            <input type="text" name="descricao" value="<?php echo htmlentities($ativo->getDescricao()); ?>">
+            <input type="text" name="descricao" value="<?php echo htmlentities($ativo->getDescricao()); ?>" required>
         </label>
 
         <label>
             Filial:
-            <select name="filial">
+            <select name="filial" required>
                 <option value=""></option>
                 <?php foreach ($formData['filiais'] as $filial) : ?>
                     <option value="<?php echo $filial->getId(); ?>"
@@ -21,7 +21,7 @@
 
         <label>
             Setor:
-            <select name="setor">
+            <select name="setor" required>
                 <option value=""></option>
                 <?php foreach ($formData['setores'] as $setor) : ?>
                     <option value="<?php echo $setor->getId(); ?>"
@@ -34,7 +34,7 @@
 
         <label>
             Categoria:
-            <select name="categoria">
+            <select name="categoria" required>
                 <option value=""></option>
                 <?php foreach ($formData['categorias'] as $categoria) : ?>
                     <option value="<?php echo $categoria->getId(); ?>"
@@ -47,12 +47,12 @@
 
         <label>
             Data de Aquisição:
-            <input type="date" name="data_aquisicao" value="<?php echo $ativo->getDataAquisicao() !== '' ? $ativo->getDataAquisicao()->format('Y-m-d') : ''; ?>">
+            <input type="date" name="data_aquisicao" value="<?php echo $ativo->getDataAquisicao() ? $ativo->getDataAquisicao()->format('Y-m-d') : ''; ?>" required>
         </label>
 
         <label>
             Vida Útil:
-            <input type="text" name="vida_util" value="<?php echo $ativo->getVidaUtil() !== 0 ? htmlentities($ativo->getVidaUtil()) : ''; ?>">
+            <input type="text" name="vida_util" value="<?php echo $ativo->getVidaUtil() !== 0 ? htmlentities($ativo->getVidaUtil()) : ''; ?>" required>
         </label>
 
         <label>

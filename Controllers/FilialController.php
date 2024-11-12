@@ -100,7 +100,7 @@ if (isset($_GET['edit_id']))
 }
 
 // removendo filial
-if (array_key_exists('delete_id', $_GET))
+if (isset($_GET['delete_id']))
 {
     $id = intval($_GET['delete_id']);
     $filialRepository->remover($id);
@@ -127,6 +127,6 @@ if (isset($_GET['detail_id']))
     die();
 }
 
-$filiais = $filialRepository->buscar();
+$filiais = $filialRepository->buscar() ?? [];
 require __DIR__ . "/../Views/Filial/template.php";
 ?>

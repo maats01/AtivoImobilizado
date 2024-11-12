@@ -3,12 +3,12 @@ require_once 'Utils/utils.php';
 
 class Transferencia
 {
-    private int $id;
-    private int $ativo_id;
-    private int $filial_origem_id;
-    private int $setor_origem_id;
-    private int $filial_destino_id;
-    private int $setor_destino_id;
+    private int $id = 0;
+    private int $ativo_id = 0;
+    private int $filial_origem_id = 0;
+    private int $setor_origem_id = 0;
+    private int $filial_destino_id = 0;
+    private int $setor_destino_id = 0;
     private $data_transferencia = null;
 
     public function setId(int $id) : void
