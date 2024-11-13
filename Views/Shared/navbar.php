@@ -8,5 +8,6 @@
     <a href="index.php?rota=Filial">Filiais</a>
     <a href="index.php?rota=Setor">Setores</a>
     <a href="index.php?rota=Transferencia">Transferências</a>
+    <a href="index.php?rota=Categoria">Categorias</a>
   </ul>
 </nav>
