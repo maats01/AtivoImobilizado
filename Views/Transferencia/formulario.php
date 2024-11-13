@@ -1,3 +1,35 @@
+<script>
+    const filialSetores = <?php echo json_encode($setores_filial); ?>;
+    document.addEventListener('DOMContentLoaded', function () {
+    const filialOrigemSelect = document.querySelector('select[name="filial_origem_id"]');
+    const setorOrigemSelect = document.querySelector('select[name="setor_origem_id"]');
+    const filialDestinoSelect = document.querySelector('select[name="filial_destino_id"]');
+    const setorDestinoSelect = document.querySelector('select[name="setor_destino_id"]');
+
+    function updateSetorOptions(filialSelect, setorSelect) {
+        const filialId = filialSelect.value;
+        setorSelect.innerHTML = '<option value=""></option>'; // Limpar opções anteriores
+
+        if (filialSetores[filialId]) {
+            filialSetores[filialId].forEach(setor => {
+                const option = document.createElement('option');
+                option.value = setor.id;
+                option.textContent = setor.descricao;
+                setorSelect.appendChild(option);
+            });
+        }
+    }
+
+    filialOrigemSelect.addEventListener('change', function () {
+        updateSetorOptions(filialOrigemSelect, setorOrigemSelect);
+    });
+
+    filialDestinoSelect.addEventListener('change', function () {
+        updateSetorOptions(filialDestinoSelect, setorDestinoSelect);
+    });
+});
+</script>
+
 <form method="post">
     <fieldset>
         <legend>Nova transferência</legend>

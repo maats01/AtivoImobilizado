@@ -1,8 +1,8 @@
 <?php 
-require 'config.php';
-require 'Utils/Banco.php';
-require 'Utils/utils.php';
-require 'Views/Shared/navbar.php';
+require_once 'config.php';
+require_once 'Utils/Banco.php';
+require_once 'Utils/utils.php';
+require_once 'Views/Shared/navbar.php';
 
 date_default_timezone_set('America/Sao_Paulo');
 

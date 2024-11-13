@@ -101,6 +101,7 @@ if (isset($_GET['delete_id']))
 $ativos = $transfService->buscar_ativos() ?? [];
 $setores = $transfService->buscar_setores() ?? [];
 $filiais = $transfService->buscar_filiais() ?? [];
+$setores_filial = $transfService->buscar_setores_por_filiais($filiais);
 $transferencias = $transfRepository->buscar() ?? [];
 require __DIR__ . '/../Views/Transferencia/template.php';
 ?>
