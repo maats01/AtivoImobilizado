@@ -1,12 +1,8 @@
 <script>
+    // Função para atualizar as opções de setor com base na filial selecionada
     const filialSetores = <?php echo json_encode($setores_filial); ?>;
-    document.addEventListener('DOMContentLoaded', function () {
-    const filialOrigemSelect = document.querySelector('select[name="filial_origem_id"]');
-    const setorOrigemSelect = document.querySelector('select[name="setor_origem_id"]');
-    const filialDestinoSelect = document.querySelector('select[name="filial_destino_id"]');
-    const setorDestinoSelect = document.querySelector('select[name="setor_destino_id"]');
 
-    function updateSetorOptions(filialSelect, setorSelect) {
+    function updateSetorOptions(filialSelect, setorSelect, selectedSetorId) {
         const filialId = filialSelect.value;
         setorSelect.innerHTML = '<option value=""></option>'; // Limpar opções anteriores
 
@@ -15,20 +11,68 @@
                 const option = document.createElement('option');
                 option.value = setor.id;
                 option.textContent = setor.descricao;
+                
+                if (selectedSetorId && selectedSetorId === setor.id) {
+                    option.selected = true;
+                }
+
                 setorSelect.appendChild(option);
             });
         }
     }
 
-    filialOrigemSelect.addEventListener('change', function () {
-        updateSetorOptions(filialOrigemSelect, setorOrigemSelect);
-    });
+    document.addEventListener('DOMContentLoaded', function () {
+        // Primeiro script para filiais e setores
+        const filialOrigemSelect = document.querySelector('select[name="filial_origem_id"]');
+        const setorOrigemSelect = document.querySelector('select[name="setor_origem_id"]');
+        const filialDestinoSelect = document.querySelector('select[name="filial_destino_id"]');
+        const setorDestinoSelect = document.querySelector('select[name="setor_destino_id"]');
 
-    filialDestinoSelect.addEventListener('change', function () {
-        updateSetorOptions(filialDestinoSelect, setorDestinoSelect);
+        // Atualiza setor de origem e destino ao carregar a página, se já houver dados
+        updateSetorOptions(filialOrigemSelect, setorOrigemSelect, <?php echo isset($transf) ? $transf->getIdSetorOrigem() : 'null'; ?>);
+        updateSetorOptions(filialDestinoSelect, setorDestinoSelect, <?php echo isset($transf) ? $transf->getIdSetorDestino() : 'null'; ?>);
+
+        // Listeners para mudança nas filiais
+        filialOrigemSelect.addEventListener('change', function () {
+            updateSetorOptions(filialOrigemSelect, setorOrigemSelect);
+        });
+
+        filialDestinoSelect.addEventListener('change', function () {
+            updateSetorOptions(filialDestinoSelect, setorDestinoSelect);
+        });
+
+        // Segundo script para ativo e setor
+        const ativoSelect = document.querySelector('select[name="ativo_id"]');
+        const filialOrigemSelectForAtivo = document.querySelector('select[name="filial_origem_id"]');
+        const setorOrigemSelectForAtivo = document.querySelector('select[name="setor_origem_id"]');
+
+        const ativos = <?php echo json_encode($transfService->transformar_ativos_para_array($ativos)); ?>;
+
+        function updateFilialAndSetor(ativoId) {
+            const ativo = ativos.find(a => a.id === ativoId);
+
+            if (ativo) {
+                const filialId = ativo.filial_id;
+                const setorId = ativo.setor_id;
+
+                filialOrigemSelectForAtivo.value = filialId;
+                updateSetorOptions(filialOrigemSelectForAtivo, setorOrigemSelectForAtivo, setorId);
+            }
+        }
+
+        // Atualiza a filial e setor de origem ao selecionar um ativo
+        ativoSelect.addEventListener('change', function () {
+            const ativoId = parseInt(ativoSelect.value);
+            updateFilialAndSetor(ativoId);
+        });
+
+        // Preenche a filial e setor ao carregar a página, se já houver um ativo selecionado
+        <?php if (isset($transf) && $transf->getIdAtivo()): ?>
+            updateFilialAndSetor(<?php echo $transf->getIdAtivo(); ?>);
+        <?php endif; ?>
     });
-});
 </script>
+
 
 <form method="post">
     <fieldset>

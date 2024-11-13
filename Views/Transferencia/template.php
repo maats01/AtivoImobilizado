@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <title>Setores</title>
+        <title>Transferências</title>
         <link rel="stylesheet" href="assets/style.css">
     </head>
     <body>

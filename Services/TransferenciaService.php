@@ -44,6 +44,23 @@ class TransferenciaService
         return $setores_filial;
     }
 
+    public function transformar_ativos_para_array($ativos)
+    {
+        $ativos_array = [];
+
+        foreach ($ativos as $ativo)
+        {
+            $ativos_array[] = [
+                'id' => $ativo->getId(),
+                'filial_id' => $ativo->getFilialId(),
+                'setor_id' => $ativo->getSetorId(),
+                'descricao' => $ativo->getDescricao()
+            ];
+        }
+
+        return $ativos_array;
+    }
+
     public function buscar_filiais()
     {
         return $this->filialRepository->buscar();
