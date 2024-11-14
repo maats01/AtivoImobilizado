@@ -7,6 +7,9 @@ $filialService = new FilialService($pdo);
 $filialRepository = new FilialRepository($pdo);
 $filial = new Filial();
 
+$tem_erros = false;
+$erros_validacao = [];
+
 $exibir_tabela = true;
 
 // inserindo nova filial
@@ -17,14 +20,24 @@ if (tem_post() && !isset($_GET['edit_id']) && !isset($_GET['detail_id']))
         $filial->setNome($_POST['nome']);
     }
 
-    if (array_key_exists('cnpj', $_POST))
+    if (array_key_exists('cnpj', $_POST) && strlen($_POST['cnpj']) == 14)
     {
         $filial->setCnpj($_POST['cnpj']);
     }
+    else
+    {
+        $tem_erros = true;
+        $erros_validacao['cnpj'] = 'O Cnpj deve conter 14 caracteres';
+    }
 
-    if (array_key_exists('estado', $_POST))
+    if (array_key_exists('estado', $_POST) && strlen($_POST['estado']) == 2)
     {
         $filial->setEstado($_POST['estado']);
+    }
+    else
+    {
+        $tem_erros = true;
+        $erros_validacao['estado'] = 'O estado deve estar em sigla';
     }
 
     if (array_key_exists('cidade', $_POST))
@@ -47,8 +60,11 @@ if (tem_post() && !isset($_GET['edit_id']) && !isset($_GET['detail_id']))
         $filial->setNumero($_POST['num']);
     }
 
-    $filialRepository->salvar($filial);
-    redirecionar('Filial');
+    if (!$tem_erros)
+    {
+        $filialRepository->salvar($filial);
+        redirecionar('Filial');
+    }       
 }
 
 // atualizando filial
@@ -64,14 +80,24 @@ if (isset($_GET['edit_id']))
             $filial->setNome($_POST['nome']);
         }
     
-        if (array_key_exists('cnpj', $_POST))
+        if (array_key_exists('cnpj', $_POST) && strlen($_POST['cnpj']) == 14)
         {
             $filial->setCnpj($_POST['cnpj']);
         }
+        else
+        {
+            $tem_erros = true;
+            $erros_validacao['cnpj'] = 'O Cnpj deve conter 14 caracteres';
+        }
     
-        if (array_key_exists('estado', $_POST))
+        if (array_key_exists('estado', $_POST) && strlen($_POST['estado']) == 2)
         {
             $filial->setEstado($_POST['estado']);
+        }
+        else
+        {
+            $tem_erros = true;
+            $erros_validacao['estado'] = 'O estado deve estar em sigla';
         }
     
         if (array_key_exists('cidade', $_POST))
@@ -94,8 +120,11 @@ if (isset($_GET['edit_id']))
             $filial->setNumero($_POST['num']);
         }
         
-        $filialRepository->atualizar($filial);
-        redirecionar('Filial');
+        if (!$tem_erros)
+        {
+            $filialRepository->atualizar($filial);
+            redirecionar('Filial');
+        }
     }
 }
 
@@ -103,6 +132,7 @@ if (isset($_GET['edit_id']))
 if (isset($_GET['delete_id']))
 {
     $id = intval($_GET['delete_id']);
+    // $filialService->remover_por_filial($id);
     $filialRepository->remover($id);
     redirecionar('Filial');
 }

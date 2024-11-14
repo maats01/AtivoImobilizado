@@ -39,7 +39,7 @@
                 <a href="?rota=Filial&edit_id=<?php echo $filial->getId(); ?>">
                     Editar
                 </a>
-                <a href="?rota=Filial&delete_id=<?php echo $filial->getId(); ?>">
+                <a href="?rota=Filial&delete_id=<?php echo $filial->getId(); ?>" onclick="return confirmarRemocao()">
                     Remover
                 </a>
                 <a href="?rota=Filial&detail_id=<?php echo $filial->getId(); ?>">

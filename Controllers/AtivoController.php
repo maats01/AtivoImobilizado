@@ -7,6 +7,8 @@ $ativoService = new AtivoService($pdo);
 $ativoRepository = new AtivoRepository($pdo);
 $ativo = new Ativo();
 
+$erros_validacao = [];
+$tem_erros = false;
 $exibir_tabela = true;
 
 // inserindo novo ativo
@@ -37,18 +39,19 @@ if (tem_post() && !isset($_GET['edit_id']))
         $ativo->setDataAquisicao(traduz_data_para_banco($_POST['data_aquisicao']));
     }
 
-    if (array_key_exists('condicao', $_POST))
+    if (array_key_exists('condicao', $_POST) && is_numeric($_POST['condicao']))
     {
-        $condicao = $_POST['condicao'];
-        if ($condicao !== '')
-        {
-            $ativo->setCondicao(intval($condicao));
-        }
+        $ativo->setCondicao(intval($_POST['condicao']));
     }
 
-    if (array_key_exists('vida_util', $_POST))
+    if (array_key_exists('vida_util', $_POST) && filter_var($_POST['vida_util'], FILTER_VALIDATE_INT) !== false)
     {
         $ativo->setVidaUtil(intval($_POST['vida_util']));
+    }
+    else
+    {
+        $tem_erros = true;
+        $erros_validacao['vida_util'] = 'Vida útil deve ser um número inteiro representando tempo em anos';
     }
     
     if (array_key_exists('valor', $_POST))
@@ -56,10 +59,12 @@ if (tem_post() && !isset($_GET['edit_id']))
         $ativo->setValor(floatval($_POST['valor']));
     }
 
-    
-    $ativo->setDataCadastro(date('Y-m-d H:i:s'));
-    $ativoRepository->salvar($ativo);
-    redirecionar('Ativo');
+    if (!$tem_erros)
+    {
+        $ativo->setDataCadastro(date('Y-m-d H:i:s'));
+        $ativoRepository->salvar($ativo);
+        redirecionar('Ativo');
+    }
 }
 
 // atualizando ativo
@@ -105,9 +110,14 @@ if (isset($_GET['edit_id']))
             }
         }
     
-        if (array_key_exists('vida_util', $_POST))
+        if (array_key_exists('vida_util', $_POST) && filter_var($_POST['vida_util'], FILTER_VALIDATE_INT) !== false)
         {
             $ativo->setVidaUtil(intval($_POST['vida_util']));
+        }
+        else
+        {
+            $tem_erros = true;
+            $erros_validacao['vida_util'] = 'Vida útil deve ser um número inteiro representando tempo em anos';
         }
         
         if (array_key_exists('valor', $_POST))
@@ -120,8 +130,11 @@ if (isset($_GET['edit_id']))
             $ativo->setEstadoAtivo(intval($_POST['estado_ativo']));
         }
         
-        $ativoRepository->atualizar($ativo);
-        redirecionar('Ativo');
+        if (!$tem_erros)
+        {
+            $ativoRepository->atualizar($ativo);
+            redirecionar('Ativo');
+        }
     }
 
 }
@@ -135,7 +148,6 @@ if (isset($_GET['delete_id']))
 }
 
 $formData = $ativoService->dados_para_form();
-$ativos = $ativoRepository->buscar();
+$ativos = $ativoRepository->buscar() ?? [];
 require __DIR__ . "/../Views/Ativo/template.php";
-
 ?>

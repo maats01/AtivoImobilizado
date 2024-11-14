@@ -15,7 +15,7 @@
                 <a href="?rota=Setor&edit_id=<?php echo $setor->getId(); ?>">
                     Editar
                 </a>
-                <a href="?rota=Setor&delete_id=<?php echo $setor->getId(); ?>">
+                <a href="?rota=Setor&delete_id=<?php echo $setor->getId(); ?>" onclick="return confirmarRemocao()">
                     Remover
                 </a>
             </td>

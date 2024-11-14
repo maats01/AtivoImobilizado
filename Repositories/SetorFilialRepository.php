@@ -56,6 +56,22 @@ class SetorFilialRepository
         return $stmt->execute([':id1' => $filial_id, 'id2' => $setor_id]);
     }
 
+    public function removerPorFilial(int $filial_id) : bool
+    {
+        $query = "DELETE FROM SETOR_FILIAL WHERE filial_id = :id1";
+
+        $stmt = $this->bd->prepare($query);
+        return $stmt->execute([':id1' => $filial_id]);
+    }
+
+    public function removerPorSetor(int $setor_id) : bool
+    {
+        $query = "DELETE FROM SETOR_FILIAL WHERE setor_id = :id1";
+
+        $stmt = $this->bd->prepare($query);
+        return $stmt->execute([':id1' => $setor_id]);
+    }
+
     public function buscar(int $filial_id = 0) : ?array
     {
         if ($filial_id > 0)

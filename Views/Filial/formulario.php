@@ -7,10 +7,16 @@
         </label>
         <label>
             CNPJ:
+            <?php if ($tem_erros && isset($erros_validacao['cnpj'])) : ?>
+                <span class="erro"><?php echo $erros_validacao['cnpj']; ?></span>
+            <?php endif; ?>
             <input type="text" name="cnpj" value="<?php echo htmlentities($filial->getCnpj()); ?>" required>
         </label>
         <label>
-            Estado:
+            Estado (UF):
+            <?php if ($tem_erros && isset($erros_validacao['estado'])) : ?>
+                <span class="erro"><?php echo $erros_validacao['estado']; ?></span>
+            <?php endif; ?>
             <input type="text" name="estado" value="<?php echo htmlentities($filial->getEstado()); ?>" required>
         </label>
         <label>

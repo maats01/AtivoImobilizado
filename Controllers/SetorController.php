@@ -1,7 +1,9 @@
 <?php 
 require_once 'Models/setor.php';
 require_once 'Repositories/SetorRepository.php';
+// require_once 'Services/SetorService.php'; 
 
+// $setorService = new SetorService($pdo);
 $setorRepository = new SetorRepository($pdo);
 $setor = new Setor();
 
@@ -41,6 +43,7 @@ if (isset($_GET['edit_id']))
 if (isset($_GET['delete_id']))
 {
     $id = intval($_GET['delete_id']);
+    // $setorService->remover_por_setor($id);
     $setorRepository->remover($id);
     redirecionar('Setor');
 }

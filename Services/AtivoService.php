@@ -1,7 +1,7 @@
 <?php 
-require __DIR__ . '/../Repositories/SetorRepository.php';
-require __DIR__ . '/../Repositories/CategoriaRepository.php';
-require __DIR__ . '/../Repositories/FilialRepository.php';
+require_once 'Repositories/SetorRepository.php';
+require_once 'Repositories/CategoriaRepository.php';
+require_once 'Repositories/FilialRepository.php';
 
 class AtivoService
 {

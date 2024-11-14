@@ -52,12 +52,15 @@
 
         <label>
             Vida Útil:
+            <?php if ($tem_erros && isset($erros_validacao['vida_util'])) : ?>
+                <span class="erro"><?php echo $erros_validacao['vida_util']; ?></span>
+            <?php endif; ?>
             <input type="text" name="vida_util" value="<?php echo $ativo->getVidaUtil() !== 0 ? htmlentities($ativo->getVidaUtil()) : ''; ?>" required>
         </label>
 
         <label>
             Condição:
-            <select name="condicao">
+            <select name="condicao" required>
                 <option value=""></option>
                 <option value="1" <?php echo isset($ativo) && $ativo->getCondicao() === 1 ? 'selected' : ''; ?>>Excelente</option>
                 <option value="2" <?php echo isset($ativo) && $ativo->getCondicao() === 2 ? 'selected' : ''; ?>>Bom</option>
@@ -75,7 +78,7 @@
 
         <label>
             Valor:
-            <input type="number" name="valor" value="<?php echo $ativo->getValor() !== 0.0 ? htmlentities($ativo->getValor()) : ''; ?>">
+            <input type="number" name="valor" value="<?php echo $ativo->getValor() !== 0.0 ? htmlentities($ativo->getValor()) : ''; ?>" required>
         </label>
 
         <input type="submit" value="Enviar">

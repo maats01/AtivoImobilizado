@@ -1,6 +1,6 @@
 <?php
-require 'Repositories/SetorRepository.php';
-require 'Repositories/SetorFilialRepository.php';
+require_once 'Repositories/SetorRepository.php';
+require_once 'Repositories/SetorFilialRepository.php';
 
 
 class FilialService
@@ -8,7 +8,7 @@ class FilialService
     private $setorRepository;
     private $setorFilialRepository;
 
-    public function __construct($pdo)
+    public function __construct(PDO $pdo)
     {
         $this->setorRepository = new SetorRepository($pdo);
         $this->setorFilialRepository = new SetorFilialRepository($pdo);
@@ -24,6 +24,11 @@ class FilialService
         $setores = $this->setorFilialRepository->setoresPorFilial($filial_id);
 
         return $setores === null ? [] : $setores;
+    }
+
+    public function remover_por_filial($filial_id)
+    {
+        return $this->setorFilialRepository->removerPorFilial($filial_id);
     }
 
     public function atualizar_setores_filial($filial_id, $setores_selecionados, $setores_atuais)

@@ -46,6 +46,6 @@ if (isset($_GET['delete_id']))
     redirecionar('Categoria');
 }
 
-$categorias = $categoriaRepository->buscar();
+$categorias = $categoriaRepository->buscar() ?? [];
 require __DIR__ . '/../Views/Categoria/template.php';
 ?>

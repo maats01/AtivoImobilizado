@@ -35,7 +35,7 @@
                 <a href="?rota=Transferencia&edit_id=<?php echo $transf->getId(); ?>">
                     Editar
                 </a>
-                <a href="?rota=Transferencia&delete_id=<?php echo $transf->getId(); ?>">
+                <a href="?rota=Transferencia&delete_id=<?php echo $transf->getId(); ?>" onclick="return confirmarRemocao()">
                     Remover
                 </a>
             </td>
