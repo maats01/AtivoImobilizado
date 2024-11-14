@@ -132,7 +132,6 @@ if (isset($_GET['edit_id']))
 if (isset($_GET['delete_id']))
 {
     $id = intval($_GET['delete_id']);
-    // $filialService->remover_por_filial($id);
     $filialRepository->remover($id);
     redirecionar('Filial');
 }
