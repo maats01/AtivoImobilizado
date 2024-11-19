@@ -14,22 +14,22 @@
                 <?php echo $transf->getId(); ?>
             </td>
             <td>
-                <?php echo $transfService->nome_ativo($transf->getIdAtivo()); ?>
+                <?php echo $transfService->nomeAtivo($transf->getIdAtivo()); ?>
             </td>
             <td>
-                <?php echo $transfService->nome_filial($transf->getIdFilialOrigem()); ?>
+                <?php echo $transfService->nomeFilial($transf->getIdFilialOrigem()); ?>
             </td>
             <td>
-                <?php echo $transfService->nome_setor($transf->getIdSetorOrigem()); ?>
+                <?php echo $transfService->nomeSetor($transf->getIdSetorOrigem()); ?>
             </td>
             <td>
-                <?php echo $transfService->nome_filial($transf->getIdFilialDestino()); ?>
+                <?php echo $transfService->nomeFilial($transf->getIdFilialDestino()); ?>
             </td>
             <td>
-                <?php echo $transfService->nome_setor($transf->getIdSetorDestino()); ?>
+                <?php echo $transfService->nomeSetor($transf->getIdSetorDestino()); ?>
             </td>
             <td>
-                <?php echo traduz_data_para_exibir($transf->getData()); ?>
+                <?php echo traduzDataParaExibir($transf->getData()); ?>
             </td>
             <td>
                 <a href="?rota=Transferencia&edit_id=<?php echo $transf->getId(); ?>">

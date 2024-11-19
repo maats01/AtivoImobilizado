@@ -41,7 +41,7 @@
         const filialOrigemSelectForAtivo = document.querySelector('select[name="filial_origem_id"]');
         const setorOrigemSelectForAtivo = document.querySelector('select[name="setor_origem_id"]');
 
-        const ativos = <?php echo json_encode($transfService->transformar_ativos_para_array($ativos)); ?>;
+        const ativos = <?php echo json_encode($transfService->transformarAtivos($ativos)); ?>;
 
         function updateFilialAndSetor(ativoId) {
             const ativo = ativos.find(a => a.id === ativoId);

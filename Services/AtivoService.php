@@ -16,7 +16,7 @@ class AtivoService
         $this->setorRepository = new SetorRepository($pdo);
     }
 
-    public function dados_para_form()
+    public function dadosParaForm() : array
     {
         $filiais = $this->filialRepository->buscar() ?? [];
         $categorias = $this->categoriaRepository->buscar() ?? [];
@@ -29,17 +29,17 @@ class AtivoService
         ];
     }
 
-    public function nome_filial($id)
+    public function nomeFilial(int $id) : string
     {
         return $this->filialRepository->buscar($id)->getNome();
     }
 
-    public function nome_categoria($id)
+    public function nomeCategoria(int $id) : string
     {
         return $this->categoriaRepository->buscar($id)->getDescricao();
     }
 
-    public function nome_setor($id)
+    public function nomeSetor(int $id) : string
     {
         return $this->setorRepository->buscar($id)->getDescricao();
     }

@@ -14,24 +14,17 @@ class FilialService
         $this->setorFilialRepository = new SetorFilialRepository($pdo);
     }
 
-    public function buscar_setores()
+    public function buscarSetores() : ?array
     {
         return $this->setorRepository->buscar();
     }
 
-    public function buscar_setores_por_filial($filial_id)
+    public function buscarSetoresPorFilial(int $filial_id) : ?array
     {
-        $setores = $this->setorFilialRepository->setoresPorFilial($filial_id);
-
-        return $setores === null ? [] : $setores;
+        return $this->setorFilialRepository->setoresPorFilial($filial_id);
     }
 
-    public function remover_por_filial($filial_id)
-    {
-        return $this->setorFilialRepository->removerPorFilial($filial_id);
-    }
-
-    public function atualizar_setores_filial($filial_id, $setores_selecionados, $setores_atuais)
+    public function atualizarSetoresFilial(int $filial_id, array $setores_selecionados, array $setores_atuais) : void
     {
         if (count($setores_selecionados) == 0 && count($setores_atuais) > 0) 
         {

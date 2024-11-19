@@ -21,25 +21,25 @@
                 <?php echo $ativo->getDescricao(); ?>
             </td>
             <td>
-                <?php echo $ativoService->nome_filial($ativo->getFilialId()); ?>
+                <?php echo $ativoService->nomeFilial($ativo->getFilialId()); ?>
             </td>
             <td>
-                <?php echo $ativoService->nome_setor($ativo->getSetorId()); ?>
+                <?php echo $ativoService->nomeSetor($ativo->getSetorId()); ?>
             </td>
             <td>
-                <?php echo $ativoService->nome_categoria($ativo->getCategoriaId()); ?>
+                <?php echo $ativoService->nomeCategoria($ativo->getCategoriaId()); ?>
             </td>
             <td>
-                <?php echo traduz_data_para_exibir($ativo->getDataCadastro()); ?>
+                <?php echo traduzDataParaExibir($ativo->getDataCadastro()); ?>
             </td>
             <td>
-                <?php echo traduz_data_para_exibir($ativo->getDataAquisicao()); ?>
+                <?php echo traduzDataParaExibir($ativo->getDataAquisicao()); ?>
             </td>
             <td>
                 <?php echo $ativo->getVidaUtil() . ' ano'; ?>
             </td>
             <td>
-                <?php echo traduz_condicao_para_exibir($ativo->getCondicao()); ?>
+                <?php echo traduzCondicaoParaExibir($ativo->getCondicao()); ?>
             </td>
             <td>
                 <?php echo $ativo->getEstadoAtivo() == 1 ? 'Ativo' : 'Baixado'; ?>

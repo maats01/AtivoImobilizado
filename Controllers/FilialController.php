@@ -141,14 +141,14 @@ if (isset($_GET['detail_id']))
 {
     $id = intval($_GET['detail_id']);
     $filial = $filialRepository->buscar($id);
-    $setores = $filialService->buscar_setores();
-    $setores_atuais = $filialService->buscar_setores_por_filial($id);
+    $setores = $filialService->buscarSetores();
+    $setores_atuais = $filialService->buscarSetoresPorFilial($id) ?? [];
     require __DIR__ . "/../Views/Filial/filial_template.php";
 
     if (tem_post())
     {
         $setores_selecionados = isset($_POST['setores']) ? $_POST['setores'] : [];
-        $filialService->atualizar_setores_filial($id, $setores_selecionados, $setores_atuais);
+        $filialService->atualizarSetoresFilial($id, $setores_selecionados, $setores_atuais);
 
         redirecionar("Filial&detail_id={$id}");
     }

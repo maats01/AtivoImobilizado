@@ -38,6 +38,7 @@ if (isset($_GET['edit_id']))
     }
 }
 
+// removendo setor
 if (isset($_GET['delete_id']))
 {
     $id = intval($_GET['delete_id']);

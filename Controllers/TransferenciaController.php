@@ -43,7 +43,7 @@ if (tem_post() && !isset($_GET['edit_id']))
     }
 
     $transfRepository->salvar($transf);
-    $transfService->atualizar_ativo($transf->getIdAtivo(), $transf->getIdFilialDestino(), $transf->getIdSetorDestino());
+    $transfService->atualizarAtivo($transf->getIdAtivo(), $transf->getIdFilialDestino(), $transf->getIdSetorDestino());
     redirecionar('Transferencia');
 }
 
@@ -87,7 +87,7 @@ if (isset($_GET['edit_id']))
         }
 
         $transfRepository->atualizar($transf);
-        $transfService->atualizar_ativo($transf->getIdAtivo(), $transf->getIdFilialDestino(), $transf->getIdSetorDestino());
+        $transfService->atualizarAtivo($transf->getIdAtivo(), $transf->getIdFilialDestino(), $transf->getIdSetorDestino());
         redirecionar('Transferencia');
     }
 }
@@ -97,15 +97,15 @@ if (isset($_GET['delete_id']))
 {
     $id = intval($_GET['delete_id']);
     $transf = $transfRepository->buscar($id);
-    $transfService->atualizar_ativo($transf->getIdAtivo(), $transf->getIdFilialOrigem(), $transf->getIdSetorOrigem());
+    $transfService->atualizarAtivo($transf->getIdAtivo(), $transf->getIdFilialOrigem(), $transf->getIdSetorOrigem());
     $transfRepository->remover($id);
     redirecionar('Transferencia');
 }
 
-$ativos = $transfService->buscar_ativos() ?? [];
-$setores = $transfService->buscar_setores() ?? [];
-$filiais = $transfService->buscar_filiais() ?? [];
-$setores_filial = $transfService->buscar_setores_por_filiais($filiais);
+$ativos = $transfService->buscarAtivos() ?? [];
+$setores = $transfService->buscarSetores() ?? [];
+$filiais = $transfService->buscarFiliais() ?? [];
+$setores_filial = $transfService->buscarSetoresPorFiliais($filiais);
 $transferencias = $transfRepository->buscar() ?? [];
 require __DIR__ . '/../Views/Transferencia/template.php';
 ?>

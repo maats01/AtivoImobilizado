@@ -19,7 +19,7 @@ class TransferenciaService
         $this->setorFilialRepository = new SetorFilialRepository($pdo);
     }
 
-    public function buscar_setores_por_filiais($filiais)
+    public function buscarSetoresPorFiliais(array $filiais) : array
     {
         $setores_filial = [];
 
@@ -44,7 +44,7 @@ class TransferenciaService
         return $setores_filial;
     }
 
-    public function transformar_ativos_para_array($ativos)
+    public function transformarAtivos(array $ativos) : array
     {
         $ativos_array = [];
 
@@ -61,22 +61,22 @@ class TransferenciaService
         return $ativos_array;
     }
 
-    public function buscar_filiais()
+    public function buscarFiliais() : ?array
     {
         return $this->filialRepository->buscar();
     }
 
-    public function buscar_ativos()
+    public function buscarAtivos() : ?array
     {
         return $this->ativoRepository->buscar();
     }
 
-    public function buscar_setores()
+    public function buscarSetores() : ?array
     {
         return $this->setorRepository->buscar();
     }
 
-    public function atualizar_ativo(int $ativo_id, int $filial_id, int $setor_id)
+    public function atualizarAtivo(int $ativo_id, int $filial_id, int $setor_id) : void
     {
         $ativo = $this->ativoRepository->buscar($ativo_id);
         $ativo->setFilialId($filial_id);
@@ -85,17 +85,17 @@ class TransferenciaService
         $this->ativoRepository->atualizar($ativo);
     }
 
-    public function nome_filial(int $filial_id)
+    public function nomeFilial(int $filial_id) : string
     {
         return $this->filialRepository->buscar($filial_id)->getNome();
     }
 
-    public function nome_ativo(int $ativo_id)
+    public function nomeAtivo(int $ativo_id) : string
     {
         return $this->ativoRepository->buscar($ativo_id)->getDescricao();
     }
 
-    public function nome_setor(int $setor_id)
+    public function nomeSetor(int $setor_id) : string
     {
         return $this->setorRepository->buscar($setor_id)->getDescricao();
     }

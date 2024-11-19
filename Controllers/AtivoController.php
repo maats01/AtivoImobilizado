@@ -36,7 +36,7 @@ if (tem_post() && !isset($_GET['edit_id']))
 
     if (array_key_exists('data_aquisicao', $_POST))
     {
-        $ativo->setDataAquisicao(traduz_data_para_banco($_POST['data_aquisicao']));
+        $ativo->setDataAquisicao(traduzDataParaBanco($_POST['data_aquisicao']));
     }
 
     if (array_key_exists('condicao', $_POST) && is_numeric($_POST['condicao']))
@@ -98,7 +98,7 @@ if (isset($_GET['edit_id']))
     
         if (array_key_exists('data_aquisicao', $_POST))
         {
-            $ativo->setDataAquisicao(traduz_data_para_banco($_POST['data_aquisicao']));
+            $ativo->setDataAquisicao(traduzDataParaBanco($_POST['data_aquisicao']));
         }
     
         if (array_key_exists('condicao', $_POST))
@@ -147,7 +147,7 @@ if (isset($_GET['delete_id']))
     redirecionar('Ativo');
 }
 
-$formData = $ativoService->dados_para_form();
+$formData = $ativoService->dadosParaForm();
 $ativos = $ativoRepository->buscar() ?? [];
 require __DIR__ . "/../Views/Ativo/template.php";
 ?>

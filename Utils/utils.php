@@ -4,18 +4,18 @@ function convertToDateTime(DateTime|string $data): DateTime
     return is_string($data) ? new DateTime($data) : $data;
 }
 
-function redirecionar(string $rota)
+function redirecionar(string $rota) : void
 {
     header("Location: index.php?rota={$rota}");
     die();
 }
 
-function tem_post()
+function tem_post() : bool
 {
     return $_SERVER['REQUEST_METHOD'] === 'POST';
 }
 
-function traduz_data_para_exibir($data)
+function traduzDataParaExibir(DateTime|string $data) : string
 {
     if (is_object($data) && get_class($data) == "DateTime") {
         return $data->format("d/m/Y");
@@ -36,7 +36,7 @@ function traduz_data_para_exibir($data)
     return $data_exibir;
 }
 
-function traduz_condicao_para_exibir($condicao)
+function traduzCondicaoParaExibir(int $condicao) : ?string
 {
     switch ($condicao)
     {
@@ -60,7 +60,7 @@ function traduz_condicao_para_exibir($condicao)
     return null;
 }
 
-function traduz_data_para_banco($data)
+function traduzDataParaBanco(string $data) : string
 {
     if ($data == "") {
         return "";
