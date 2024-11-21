@@ -7,6 +7,7 @@
         <th>Filial destino</th>
         <th>Setor destino</th>
         <th>Data transferência</th>
+        <th>Opções</th>
     </tr>
     <?php foreach ($transferencias as $transf) : ?>
         <tr>

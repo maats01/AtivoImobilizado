@@ -2,6 +2,7 @@
     <tr>
         <th>ID</th>
         <th>Categoria</th>
+        <th>Opções</th>
     </tr>
     <?php foreach ($categorias as $categoria) : ?>
         <tr>

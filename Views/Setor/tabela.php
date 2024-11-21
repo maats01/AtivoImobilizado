@@ -2,6 +2,7 @@
     <tr>
         <th>ID</th>
         <th>Setor</th>
+        <th>Opções</th>
     </tr>
     <?php foreach ($setores as $setor) : ?>
         <tr>
