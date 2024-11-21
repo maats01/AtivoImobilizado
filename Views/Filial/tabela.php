@@ -8,6 +8,7 @@
         <th>Bairro</th>
         <th>Rua</th>
         <th>Número</th>
+        <th>Opções</th>
     </tr>
     <?php foreach ($filiais as $filial) : ?>
         <tr>

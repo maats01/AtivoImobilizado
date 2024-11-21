@@ -11,6 +11,7 @@
         <th>Condição</th>
         <th>Estado ativo</th>
         <th>Valor</th>
+        <th>Opções</th>
     </tr>
     <?php foreach ($ativos as $ativo) : ?>
         <tr>

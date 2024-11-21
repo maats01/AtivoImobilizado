@@ -10,6 +10,7 @@
 </head>
 
 <body>
+<div class="detalhes-filial">
     <h1>Detalhes</h1>
     <p><strong>ID:</strong> <?php echo $filial->getId(); ?></p>
     <p><strong>Nome:</strong> <?php echo $filial->getNome(); ?></p>
@@ -31,21 +32,8 @@
         </select>
         <button type="submit">Atualizar</button>
     </form>
-    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@3.1.0/dist/js/multi-select-tag.js"></script>
-    <script>
-        new MultiSelectTag(
-            'setores',
-            {
-                rounded: false,
-                tagColor: {
-                    textColor: '#23232e',
-                    borderColor: '#23232e',
-                    bgColor: '#ffffff'
-                }
-            }
-        )
-    </script>
     <a href="index.php?rota=Filial">Voltar</a>
+</div>
 </body>
 
 </html>
