@@ -7,7 +7,7 @@
     <script>
         function confirmarRemocao() {
             var confirmar = confirm("Você tem certeza que deseja remover este item?");
-            return confirmar; // Retorna true se confirmado, false se cancelado
+            return confirmar;
         }
     </script>
 </head>

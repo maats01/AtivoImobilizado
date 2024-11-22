@@ -3,7 +3,7 @@
   <div class="mobile-menu">
   </div>
   <ul class="nav-list">
-    <a class="active" href="index.php">Home</a>
+    <a href="index.php?rota=Home">Home</a>
     <a href="index.php?rota=Ativo">Ativos</a>
     <a href="index.php?rota=Filial">Filiais</a>
     <a href="index.php?rota=Setor">Setores</a>
