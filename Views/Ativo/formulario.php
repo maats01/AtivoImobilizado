@@ -55,7 +55,7 @@
             <?php if ($tem_erros && isset($erros_validacao['vida_util'])) : ?>
                 <span class="erro"><?php echo $erros_validacao['vida_util']; ?></span>
             <?php endif; ?>
-            <input type="text" name="vida_util" value="<?php echo $ativo->getVidaUtil() !== 0 ? htmlentities($ativo->getVidaUtil()) : ''; ?>" required>
+            <input type="number" name="vida_util" value="<?php echo $ativo->getVidaUtil() !== 0 ? htmlentities($ativo->getVidaUtil()) : ''; ?>" required>
         </label>
 
         <label>
@@ -78,7 +78,7 @@
 
         <label>
             Valor:
-            <input type="number" name="valor" value="<?php echo $ativo->getValor() !== 0.0 ? htmlentities($ativo->getValor()) : ''; ?>" required>
+            <input type="number" inputmode="decimal" name="valor" step="0.010" value="<?php echo $ativo->getValor() !== 0.0 ? htmlentities($ativo->getValor()) : ''; ?>" required>
         </label>
 
         <input type="submit" value="Enviar">

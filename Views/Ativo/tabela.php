@@ -37,7 +37,7 @@
                 <?php echo traduzDataParaExibir($ativo->getDataAquisicao()); ?>
             </td>
             <td>
-                <?php echo $ativo->getVidaUtil() . ' ano'; ?>
+                <?php echo $ativo->getVidaUtil() > 1 ? $ativo->getVidaUtil() . ' anos' : $ativo->getVidaUtil() . ' ano'; ?>
             </td>
             <td>
                 <?php echo traduzCondicaoParaExibir($ativo->getCondicao()); ?>
