@@ -1,13 +1,43 @@
 <table>
     <tr>
-        <th>ID</th>
-        <th>Ativo</th>
-        <th>Filial origem</th>
-        <th>Setor origem</th>
-        <th>Filial destino</th>
-        <th>Setor destino</th>
-        <th>Data transferência</th>
-        <th>Opções</th>
+        <th>
+            <a href="?rota=Transferencia&sort=id&order=<?php echo $coluna == 'id' && $ordem == 'asc' ? 'desc' : 'asc'; ?>">
+                ID <?php echo $coluna == 'id' ? ($ordem == 'asc' ? '▲' : '▼') : ''; ?>
+            </a>
+        </th>
+        <th>
+            <a href="?rota=Transferencia&sort=ativo_id&order=<?php echo $coluna == 'ativo_id' && $ordem == 'asc' ? 'desc' : 'asc'; ?>">
+                Ativo <?php echo $coluna == 'ativo_id' ? ($ordem == 'asc' ? '▲' : '▼') : ''; ?>
+            </a>
+        </th>
+        <th>
+            <a href="?rota=Transferencia&sort=filial_origem_id&order=<?php echo $coluna == 'filial_origem_id' && $ordem == 'asc' ? 'desc' : 'asc'; ?>">
+                Filial Origem <?php echo $coluna == 'filial_origem_id' ? ($ordem == 'asc' ? '▲' : '▼') : ''; ?>
+            </a>
+        </th>
+        <th>
+            <a href="?rota=Transferencia&sort=setor_origem_id&order=<?php echo $coluna == 'setor_origem_id' && $ordem == 'asc' ? 'desc' : 'asc'; ?>">
+                Setor Origem <?php echo $coluna == 'setor_origem_id' ? ($ordem == 'asc' ? '▲' : '▼') : ''; ?>
+            </a>
+        </th>
+        <th>
+            <a href="?rota=Transferencia&sort=filial_destino_id&order=<?php echo $coluna == 'filial_destino_id' && $ordem == 'asc' ? 'desc' : 'asc'; ?>">
+                Filial Destino <?php echo $coluna == 'filial_destino_id' ? ($ordem == 'asc' ? '▲' : '▼') : ''; ?>
+            </a>
+        </th>
+        <th>
+            <a href="?rota=Transferencia&sort=setor_destino_id&order=<?php echo $coluna == 'setor_destino_id' && $ordem == 'asc' ? 'desc' : 'asc'; ?>">
+                Setor Destino <?php echo $coluna == 'setor_destino_id' ? ($ordem == 'asc' ? '▲' : '▼') : ''; ?>
+            </a>
+        </th>
+        <th>
+            <a href="?rota=Transferencia&sort=data_transferencia&order=<?php echo $coluna == 'data_transferencia' && $ordem == 'asc' ? 'desc' : 'asc'; ?>">
+                Data Transferência <?php echo $coluna == 'data_transferencia' ? ($ordem == 'asc' ? '▲' : '▼') : ''; ?>
+            </a>
+        </th>
+        <th>
+            Opções
+        </th>
     </tr>
     <?php foreach ($transferencias as $transf) : ?>
         <tr>

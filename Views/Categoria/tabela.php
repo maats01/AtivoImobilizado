@@ -1,8 +1,18 @@
 <table>
     <tr>
-        <th>ID</th>
-        <th>Categoria</th>
-        <th>Opções</th>
+        <th>
+            <a href="?rota=Categoria&sort=id&order=<?php echo $coluna == 'id' && $ordem == 'asc' ? 'desc' : 'asc'; ?>">
+                ID <?php echo $coluna == 'id' ? ($ordem == 'asc' ? '▲' : '▼') : ''; ?>
+            </a>
+        </th>
+        <th>
+            <a href="?rota=Categoria&sort=descricao&order=<?php echo $coluna == 'descricao' && $ordem == 'asc' ? 'desc' : 'asc'; ?>">
+                Descrição <?php echo $coluna == 'descricao' ? ($ordem == 'asc' ? '▲' : '▼') : ''; ?>
+            </a>
+        </th>
+        <th>
+            Opções
+        </th>
     </tr>
     <?php foreach ($categorias as $categoria) : ?>
         <tr>

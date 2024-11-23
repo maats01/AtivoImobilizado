@@ -148,6 +148,20 @@ if (isset($_GET['delete_id']))
 }
 
 $formData = $ativoService->dadosParaForm();
-$ativos = $ativoRepository->buscar() ?? [];
+
+$coluna = $_GET['sort'] ?? 'id';
+$ordem = $_GET['order'] ?? 'asc';
+
+if (!in_array($coluna, ['id', 'descricao', 'filial_id', 'setor_id', 'categoria_id', 'data_cadastro', 'data_aquisicao', 'vida_util', 'condicao', 'estado_ativo', 'valor']))
+{
+    $coluna = 'id';
+}
+
+if (!in_array($ordem, ['asc', 'desc']))
+{
+    $ordem = 'asc';
+}
+
+$ativos = $ativoRepository->buscar(0, $coluna, $ordem) ?? [];
 require __DIR__ . "/../Views/Ativo/template.php";
 ?>

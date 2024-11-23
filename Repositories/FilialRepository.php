@@ -91,7 +91,7 @@ class FilialRepository
         return $stmt->execute([':id' => $id]);
     }
 
-    public function buscar(int $id = 0) : Filial|array|null
+    public function buscar(int $id = 0, string $coluna = 'id', string $ordem = 'asc') : Filial|array|null
     {
         if ($id > 0)
         {
@@ -99,7 +99,7 @@ class FilialRepository
         }
         else
         {
-            return $this->buscarFiliais();
+            return $this->buscarFiliais($coluna, $ordem);
         }
     }
 
@@ -115,9 +115,9 @@ class FilialRepository
         return $filial === false ? null : $filial;
     }
 
-    private function buscarFiliais() : ?array
+    private function buscarFiliais(string $coluna, string $ordem) : ?array
     {
-        $query = "SELECT * FROM FILIAL";
+        $query = "SELECT * FROM FILIAL ORDER BY $coluna $ordem";
         $stmt = $this->bd->query($query);
 
         $filiais = [];

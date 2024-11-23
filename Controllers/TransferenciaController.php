@@ -102,10 +102,23 @@ if (isset($_GET['delete_id']))
     redirecionar('Transferencia');
 }
 
+$coluna = $_GET['sort'] ?? 'id';
+$ordem = $_GET['order'] ?? 'asc';
+
+if (!in_array($coluna, ['id', 'ativo_id', 'filial_origem_id', 'setor_origem_id', 'filial_destino_id', 'setor_destino_id', 'data_transferencia']))
+{
+    $coluna = 'id';
+}
+
+if (!in_array($ordem, ['asc', 'desc']))
+{
+    $ordem = 'asc';
+}
+
 $ativos = $transfService->buscarAtivos() ?? [];
 $setores = $transfService->buscarSetores() ?? [];
 $filiais = $transfService->buscarFiliais() ?? [];
 $setores_filial = $transfService->buscarSetoresPorFiliais($filiais);
-$transferencias = $transfRepository->buscar() ?? [];
+$transferencias = $transfRepository->buscar(0, $coluna, $ordem) ?? [];
 require __DIR__ . '/../Views/Transferencia/template.php';
 ?>

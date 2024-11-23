@@ -4,12 +4,7 @@
     <meta charset="utf-8" />
     <title>Transferências</title>
     <link rel="stylesheet" href="assets/style.css">
-    <script>
-        function confirmarRemocao() {
-            var confirmar = confirm("Você tem certeza que deseja remover este item?");
-            return confirmar;
-        }
-    </script>
+    <script src="assets/script.js"></script>
 </head>
 
 <body>

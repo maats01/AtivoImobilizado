@@ -46,6 +46,19 @@ if (isset($_GET['delete_id']))
     redirecionar('Setor');
 }
 
-$setores = $setorRepository->buscar() ?? [];
+$coluna = $_GET['sort'] ?? 'id';
+$ordem = $_GET['order'] ?? 'asc';
+
+if (!in_array($coluna, ['id', 'descricao']))
+{
+    $coluna = 'id';
+}
+
+if (!in_array($ordem, ['asc', 'desc']))
+{
+    $ordem = 'asc';
+}
+
+$setores = $setorRepository->buscar(0, $coluna, $ordem) ?? [];
 require __DIR__ . "/../Views/Setor/template.php";
 ?>

@@ -46,6 +46,19 @@ if (isset($_GET['delete_id']))
     redirecionar('Categoria');
 }
 
-$categorias = $categoriaRepository->buscar() ?? [];
+$coluna = $_GET['sort'] ?? 'id';
+$ordem = $_GET['order'] ?? 'asc';
+
+if (!in_array($coluna, ['id', 'descricao']))
+{
+    $coluna = 'id';
+}
+
+if (!in_array($ordem, ['asc', 'desc']))
+{
+    $ordem = 'asc';
+}
+
+$categorias = $categoriaRepository->buscar(0, $coluna, $ordem) ?? [];
 require __DIR__ . '/../Views/Categoria/template.php';
 ?>
