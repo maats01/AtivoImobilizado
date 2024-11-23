@@ -71,13 +71,13 @@
                 <?php echo $filial->getNumero(); ?>
             </td>
             <td>
-                <a href="?rota=Filial&edit_id=<?php echo $filial->getId(); ?>">
+                <a class="confirmacao" href="?rota=Filial&edit_id=<?php echo $filial->getId(); ?>">
                     Editar
                 </a>
-                <a href="?rota=Filial&delete_id=<?php echo $filial->getId(); ?>" onclick="return confirmarRemocao()">
+                <a class="confirmacao" href="?rota=Filial&delete_id=<?php echo $filial->getId(); ?>" onclick="return confirmarRemocao()">
                     Remover
                 </a>
-                <a href="?rota=Filial&detail_id=<?php echo $filial->getId(); ?>">
+                <a class="confirmacao" href="?rota=Filial&detail_id=<?php echo $filial->getId(); ?>">
                     Detalhes
                 </a>
             </td>

@@ -138,6 +138,12 @@ tr:hover {
 }
 
 a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a.confirmacao {
     color: #4CAF50;
     text-decoration: none;
     font-weight: bold;
