@@ -156,6 +156,19 @@ if (isset($_GET['detail_id']))
     die();
 }
 
-$filiais = $filialRepository->buscar() ?? [];
+$coluna = $_GET['sort'] ?? 'id';
+$ordem = $_GET['order'] ?? 'asc';
+
+if (!in_array($coluna, ['id', 'nome_filial', 'cnpj', 'estado', 'cidade', 'bairro', 'rua', 'numero']))
+{
+    $coluna = 'id';
+}
+
+if (!in_array($ordem, ['asc', 'desc']))
+{
+    $ordem = 'asc';
+}
+
+$filiais = $filialRepository->buscar(0, $coluna, $ordem) ?? [];
 require __DIR__ . "/../Views/Filial/template.php";
 ?>

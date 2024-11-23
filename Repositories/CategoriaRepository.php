@@ -44,7 +44,7 @@ class CategoriaRepository
         return $stmt->execute([':id' => $id]);
     }
 
-    public function buscar(int $id = 0) : Categoria|array|null
+    public function buscar(int $id = 0, string $coluna = 'id', string $ordem = 'asc') : Categoria|array|null
     {
         if ($id > 0)
         {
@@ -52,7 +52,7 @@ class CategoriaRepository
         }
         else
         {
-            return $this->buscarCategorias($id);
+            return $this->buscarCategorias($coluna, $ordem);
         }
     }
 
@@ -68,9 +68,9 @@ class CategoriaRepository
         return $categoria === false ? null : $categoria;
     }
 
-    private function buscarCategorias() : ?array
+    private function buscarCategorias(string $coluna, string $ordem) : ?array
     {
-        $query = "SELECT * FROM CATEGORIA";
+        $query = "SELECT * FROM CATEGORIA ORDER BY $coluna $ordem";
         $stmt = $this->bd->query($query);
 
         $categorias = [];

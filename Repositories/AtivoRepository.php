@@ -117,7 +117,7 @@ class AtivoRepository
         return $stmt->execute([':id' => $id]);
     }
 
-    public function buscar(int $id = 0) : Ativo|array|null
+    public function buscar(int $id = 0, string $coluna = 'id', string $ordem = 'asc') : Ativo|array|null
     {
         if ($id > 0)
         {
@@ -125,7 +125,7 @@ class AtivoRepository
         }
         else
         {
-            return $this->buscarAtivos();
+            return $this->buscarAtivos($coluna, $ordem);
         }
     }
 
@@ -148,9 +148,10 @@ class AtivoRepository
         return null;
     }
 
-    private function buscarAtivos() : ?array
+    private function buscarAtivos(string $coluna, string $ordem) : ?array
     {
-        $query = "SELECT * FROM ATIVO";
+        $query = "SELECT * FROM ATIVO ORDER BY $coluna $ordem";   
+        
         $stmt = $this->bd->query($query);
 
         $ativos = [];

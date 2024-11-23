@@ -94,7 +94,7 @@ class TransferenciaRepository
         return $stmt->execute([':id' => $id]);
     }
 
-    public function buscar(int $id = 0) : Transferencia|array|null
+    public function buscar(int $id = 0, string $coluna = 'id', string $ordem = 'asc') : Transferencia|array|null
     {
         if ($id > 0)
         {
@@ -102,7 +102,7 @@ class TransferenciaRepository
         }
         else
         {
-            return $this->buscarTudo();
+            return $this->buscarTudo($coluna, $ordem);
         }
     }
 
@@ -123,9 +123,9 @@ class TransferenciaRepository
         return null;
     }
 
-    private function buscarTudo() : ?array
+    private function buscarTudo(string $coluna, string $ordem) : ?array
     {
-        $query = "SELECT * FROM TRANSFERENCIA";
+        $query = "SELECT * FROM TRANSFERENCIA ORDER BY $coluna $ordem";
 
         $stmt = $this->bd->query($query);
         

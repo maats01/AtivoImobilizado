@@ -43,7 +43,7 @@ class SetorRepository
         return $stmt->execute([':id' => $id]);
     }
 
-    public function buscar(int $id = 0) : Setor|array|null
+    public function buscar(int $id = 0, string $coluna = 'id', string $ordem = 'asc') : Setor|array|null
     {
         if ($id > 0)
         {
@@ -51,7 +51,7 @@ class SetorRepository
         }
         else
         {
-            return $this->buscarSetores();
+            return $this->buscarSetores($coluna, $ordem);
         }
     }
 
@@ -67,9 +67,9 @@ class SetorRepository
         return $setor === false ? null : $setor;
     }
 
-    private function buscarSetores() : ?array
+    private function buscarSetores(string $coluna, string $ordem) : ?array
     {
-        $query = "SELECT * FROM SETOR";
+        $query = "SELECT * FROM SETOR ORDER BY $coluna $ordem";
         $stmt = $this->bd->query($query);
 
         $setores = [];

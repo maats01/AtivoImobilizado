@@ -1,17 +1,63 @@
 <table>
     <tr>
-        <th>ID</th>
-        <th>Ativo</th>
-        <th>Filial</th>
-        <th>Setor</th>
-        <th>Categoria</th>
-        <th>Data cadastro</th>
-        <th>Data aquisição</th>
-        <th>Vida útil</th>
-        <th>Condição</th>
-        <th>Estado ativo</th>
-        <th>Valor</th>
-        <th>Opções</th>
+        <th>
+            <a href="?rota=Ativo&sort=id&order=<?php echo $coluna == 'id' && $ordem == 'asc' ? 'desc' : 'asc'; ?>">
+                ID <?php echo $coluna == 'id' ? ($ordem == 'asc' ? '▲' : '▼') : ''; ?>
+            </a>
+        </th>
+        <th>
+            <a href="?rota=Ativo&sort=descricao&order=<?php echo $coluna == 'descricao' && $ordem == 'asc' ? 'desc' : 'asc'; ?>">
+                Ativo <?php echo $coluna == 'descricao' ? ($ordem == 'asc' ? '▲' : '▼') : ''; ?>
+            </a>
+        </th>
+        <th>
+            <a href="?rota=Ativo&sort=filial_id&order=<?php echo $coluna == 'filial_id' && $ordem == 'asc' ? 'desc' : 'asc'; ?>">
+                Filial <?php echo $coluna == 'filial_id' ? ($ordem == 'asc' ? '▲' : '▼') : ''; ?>
+            </a>
+        </th>
+        <th>
+            <a href="?rota=Ativo&sort=setor_id&order=<?php echo $coluna == 'setor_id' && $ordem == 'asc' ? 'desc' : 'asc'; ?>">
+                Setor <?php echo $coluna == 'setor_id' ? ($ordem == 'asc' ? '▲' : '▼') : ''; ?>
+            </a>
+        </th>
+        <th>
+            <a href="?rota=Ativo&sort=categoria_id&order=<?php echo $coluna == 'categoria_id' && $ordem == 'asc' ? 'desc' : 'asc'; ?>">
+                Categoria <?php echo $coluna == 'categoria_id' ? ($ordem == 'asc' ? '▲' : '▼') : ''; ?>
+            </a>
+        </th>
+        <th>
+            <a href="?rota=Ativo&sort=data_cadastro&order=<?php echo $coluna == 'data_cadastro' && $ordem == 'asc' ? 'desc' : 'asc'; ?>">
+                Data Cadastro <?php echo $coluna == 'data_cadastro' ? ($ordem == 'asc' ? '▲' : '▼') : ''; ?>
+            </a>
+        </th>
+        <th>
+            <a href="?rota=Ativo&sort=data_aquisicao&order=<?php echo $coluna == 'data_aquisicao' && $ordem == 'asc' ? 'desc' : 'asc'; ?>">
+                Data Aquisição <?php echo $coluna == 'data_aquisicao' ? ($ordem == 'asc' ? '▲' : '▼') : ''; ?>
+            </a>
+        </th>
+        <th>
+            <a href="?rota=Ativo&sort=vida_util&order=<?php echo $coluna == 'vida_util' && $ordem == 'asc' ? 'desc' : 'asc'; ?>">
+                Vida Útil <?php echo $coluna == 'vida_util' ? ($ordem == 'asc' ? '▲' : '▼') : ''; ?>
+            </a>
+        </th>
+        <th>
+            <a href="?rota=Ativo&sort=condicao&order=<?php echo $coluna == 'condicao' && $ordem == 'asc' ? 'desc' : 'asc'; ?>">
+                Condição <?php echo $coluna == 'condicao' ? ($ordem == 'asc' ? '▲' : '▼') : ''; ?>
+            </a>
+        </th>
+        <th>
+            <a href="?rota=Ativo&sort=estado_ativo&order=<?php echo $coluna == 'estado_ativo' && $ordem == 'asc' ? 'desc' : 'asc'; ?>">
+                Estado Ativo <?php echo $coluna == 'estado_ativo' ? ($ordem == 'asc' ? '▲' : '▼') : ''; ?>
+            </a>
+        </th>
+        <th>
+            <a href="?rota=Ativo&sort=valor&order=<?php echo $coluna == 'valor' && $ordem == 'asc' ? 'desc' : 'asc'; ?>">
+                Valor <?php echo $coluna == 'valor' ? ($ordem == 'asc' ? '▲' : '▼') : ''; ?>
+            </a>
+        </th>
+        <th>
+            Opções
+        </th>
     </tr>
     <?php foreach ($ativos as $ativo) : ?>
         <tr>
