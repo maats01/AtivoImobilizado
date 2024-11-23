@@ -23,10 +23,10 @@
                 <?php echo $categoria->getDescricao(); ?>
             </td>
             <td>
-                <a href="?rota=Categoria&edit_id=<?php echo $categoria->getId(); ?>">
+                <a class="confirmacao" href="?rota=Categoria&edit_id=<?php echo $categoria->getId(); ?>">
                     Editar
                 </a>
-                <a href="?rota=Categoria&delete_id=<?php echo $categoria->getId(); ?>" onclick="return confirmarRemocao()">
+                <a class="confirmacao" href="?rota=Categoria&delete_id=<?php echo $categoria->getId(); ?>" onclick="return confirmarRemocao()">
                     Remover
                 </a>
             </td>

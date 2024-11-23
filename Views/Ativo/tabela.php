@@ -95,10 +95,10 @@
                 <?php echo 'R$ ' . $ativo->getValor(); ?>
             </td>
             <td>
-                <a href="?rota=ativo&edit_id=<?php echo $ativo->getId(); ?>">
+                <a class="confirmacao" href="?rota=ativo&edit_id=<?php echo $ativo->getId(); ?>">
                     Editar
                 </a>
-                <a href="?rota=ativo&delete_id=<?php echo $ativo->getId(); ?>" onclick="return confirmarRemocao()">
+                <a class="confirmacao" href="?rota=ativo&delete_id=<?php echo $ativo->getId(); ?>" onclick="return confirmarRemocao()">
                     Remover
                 </a>
             </td>

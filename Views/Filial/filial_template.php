@@ -44,6 +44,6 @@
             }
         )
     </script>
-    <a href="index.php?rota=Filial">Voltar</a>
+    <a class="confirmacao" href="index.php?rota=Filial">Voltar</a>
 </body>
 </html>
