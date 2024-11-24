@@ -2,6 +2,12 @@ DROP SCHEMA IF EXISTS imobilizado;
 CREATE SCHEMA imobilizado;
 USE imobilizado;
 
+CREATE TABLE LOGIN(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario varchar(255),
+    senha varchar(255)
+);
+
 CREATE TABLE FILIAL(
 	id INT AUTO_INCREMENT PRIMARY KEY,
     nome_filial VARCHAR(255),
