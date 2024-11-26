@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Setores</title>
+    <title>Categorias</title>
     <link rel="stylesheet" href="assets/style.css">
     <script src="assets/script.js"></script>
 </head>

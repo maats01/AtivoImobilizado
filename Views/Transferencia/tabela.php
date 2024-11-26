@@ -63,10 +63,10 @@
                 <?php echo traduzDataParaExibir($transf->getData()); ?>
             </td>
             <td>
-                <a href="?rota=Transferencia&edit_id=<?php echo $transf->getId(); ?>">
+                <a class="confirmacao" href="?rota=Transferencia&edit_id=<?php echo $transf->getId(); ?>">
                     Editar
                 </a>
-                <a href="?rota=Transferencia&delete_id=<?php echo $transf->getId(); ?>" onclick="return confirmarRemocao()">
+                <a class="confirmacao" href="?rota=Transferencia&delete_id=<?php echo $transf->getId(); ?>" onclick="return confirmarRemocao()">
                     Remover
                 </a>
             </td>

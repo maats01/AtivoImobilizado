@@ -147,8 +147,6 @@ if (isset($_GET['delete_id']))
     redirecionar('Ativo');
 }
 
-$formData = $ativoService->dadosParaForm();
-
 $coluna = $_GET['sort'] ?? 'id';
 $ordem = $_GET['order'] ?? 'asc';
 
@@ -162,6 +160,8 @@ if (!in_array($ordem, ['asc', 'desc']))
     $ordem = 'asc';
 }
 
+$formData = $ativoService->dadosParaForm();
+$setores_filial = $ativoService->buscarSetoresPorFiliais($formData['filiais']);
 $ativos = $ativoRepository->buscar(0, $coluna, $ordem) ?? [];
 require __DIR__ . "/../Views/Ativo/template.php";
 ?>

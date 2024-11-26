@@ -1,3 +1,38 @@
+<script>
+    const filialSetores = <?php echo json_encode($setores_filial); ?>;
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const filialSelect = document.querySelector('select[name="filial"]');
+        const setorSelect = document.querySelector('select[name="setor"]');
+
+        const selectedSetorId = "<?php echo isset($ativo) ? $ativo->getSetorId() : ''; ?>";
+        updateSetorOptions(filialSelect, setorSelect, selectedSetorId);
+
+        filialSelect.addEventListener('change', function () {
+            updateSetorOptions(filialSelect, setorSelect);
+        });
+    });
+
+    function updateSetorOptions(filialSelect, setorSelect, selectedSetorId = null) {
+        const filialId = filialSelect.value;
+        setorSelect.innerHTML = '<option value=""></option>';
+
+        if (filialSetores[filialId]) {
+            filialSetores[filialId].forEach(setor => {
+                const option = document.createElement('option');
+                option.value = setor.id;
+                option.textContent = setor.descricao;
+
+                if (selectedSetorId && selectedSetorId == setor.id) {
+                    option.selected = true;
+                }
+
+                setorSelect.appendChild(option);
+            });
+        }
+    }
+</script>
+
 <form method="post">
     <fieldset>
         <legend>Novo ativo</legend>

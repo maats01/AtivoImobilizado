@@ -62,7 +62,7 @@ CREATE TABLE TRANSFERENCIA(
     filial_destino_id INT NOT NULL,
     setor_destino_id INT NOT NULL,
     data_transferencia DATETIME,
-    FOREIGN KEY (ativo_id) REFERENCES ATIVO(id),
+    FOREIGN KEY (ativo_id) REFERENCES ATIVO(id) ON DELETE CASCADE,
     FOREIGN KEY (filial_origem_id) REFERENCES FILIAL(id),
     FOREIGN KEY (setor_origem_id) REFERENCES SETOR(id),
     FOREIGN KEY (filial_destino_id) REFERENCES FILIAL(id),
