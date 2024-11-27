@@ -1,7 +1,8 @@
 <?php 
-require_once 'Models/transferencia.php';
+permissaoParaVerSite();
 require_once 'Repositories/TransferenciaRepository.php';
 require_once 'Services/TransferenciaService.php';
+require_once 'Views/Shared/navbar.php';
 
 $transfService = new TransferenciaService($pdo);
 $transfRepository = new TransferenciaRepository($pdo);

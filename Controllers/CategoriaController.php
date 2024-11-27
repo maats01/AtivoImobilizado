@@ -1,6 +1,7 @@
 <?php 
-require_once 'Models/categoria.php';
+permissaoParaVerSite();
 require_once 'Repositories/CategoriaRepository.php';
+require_once 'Views/Shared/navbar.php';
 
 $categoria = new Categoria();
 $categoriaRepository = new CategoriaRepository($pdo);

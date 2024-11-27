@@ -1,7 +1,8 @@
 <?php 
-require_once 'Models/Filial.php';
+permissaoParaVerSite();
 require_once 'Repositories/FilialRepository.php';
 require_once 'Services/FilialService.php';
+require_once 'Views/Shared/navbar.php';
 
 $filialService = new FilialService($pdo);
 $filialRepository = new FilialRepository($pdo);

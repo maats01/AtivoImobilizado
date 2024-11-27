@@ -1,6 +1,7 @@
 <?php 
-require_once 'Models/setor.php';
+permissaoParaVerSite();
 require_once 'Repositories/SetorRepository.php';
+require_once 'Views/Shared/navbar.php';
 
 $setorRepository = new SetorRepository($pdo);
 $setor = new Setor();

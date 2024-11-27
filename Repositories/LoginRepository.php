@@ -69,6 +69,18 @@ class LoginRepository
         }
     }
 
+    public function buscarPorUsuario(string $usuario) : ?Login
+    {
+        $query = 'SELECT * FROM LOGIN WHERE usuario = :usuario';
+
+        $stmt = $this->bd->prepare($query);
+        $stmt->execute([':usuario' => $usuario]);
+
+        $login = $stmt->fetchObject('Login');
+
+        return $login === false ? null : $login;  
+    }
+
     private function buscarLogin(int $id) : ?Login
     {
         $query = 'SELECT * FROM LOGIN WHERE id = :id';

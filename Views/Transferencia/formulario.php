@@ -10,7 +10,7 @@
                 const option = document.createElement('option');
                 option.value = setor.id;
                 option.textContent = setor.descricao;
-                
+
                 if (selectedSetorId && selectedSetorId === setor.id) {
                     option.selected = true;
                 }
@@ -20,7 +20,7 @@
         }
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
         const filialOrigemSelect = document.querySelector('select[name="filial_origem_id"]');
         const setorOrigemSelect = document.querySelector('select[name="setor_origem_id"]');
         const filialDestinoSelect = document.querySelector('select[name="filial_destino_id"]');
@@ -29,11 +29,11 @@
         updateSetorOptions(filialOrigemSelect, setorOrigemSelect, <?php echo isset($transf) ? $transf->getIdSetorOrigem() : 'null'; ?>);
         updateSetorOptions(filialDestinoSelect, setorDestinoSelect, <?php echo isset($transf) ? $transf->getIdSetorDestino() : 'null'; ?>);
 
-        filialOrigemSelect.addEventListener('change', function () {
+        filialOrigemSelect.addEventListener('change', function() {
             updateSetorOptions(filialOrigemSelect, setorOrigemSelect);
         });
 
-        filialDestinoSelect.addEventListener('change', function () {
+        filialDestinoSelect.addEventListener('change', function() {
             updateSetorOptions(filialDestinoSelect, setorDestinoSelect);
         });
 
@@ -55,7 +55,7 @@
             }
         }
 
-        ativoSelect.addEventListener('change', function () {
+        ativoSelect.addEventListener('change', function() {
             const ativoId = parseInt(ativoSelect.value);
             updateFilialAndSetor(ativoId);
         });
@@ -101,10 +101,10 @@
                 <option value=""></option>
                 <?php foreach ($setores as $setor): ?>
                     <option value="<?php echo $setor->getId(); ?>"
-                    <?php echo isset($transf) && $transf->getIdSetorOrigem() == $setor->getId() ? 'selected' : '' ?>>
+                        <?php echo isset($transf) && $transf->getIdSetorOrigem() == $setor->getId() ? 'selected' : '' ?>>
                         <?php echo $setor->getDescricao(); ?>
                     </option>
-                <?php endforeach;?>
+                <?php endforeach; ?>
             </select>
         </label>
 
@@ -127,10 +127,10 @@
                 <option value=""></option>
                 <?php foreach ($setores as $setor): ?>
                     <option value="<?php echo $setor->getId(); ?>"
-                    <?php echo isset($transf) && $transf->getIdSetorDestino() == $setor->getId() ? 'selected' : '' ?>>
+                        <?php echo isset($transf) && $transf->getIdSetorDestino() == $setor->getId() ? 'selected' : '' ?>>
                         <?php echo $setor->getDescricao(); ?>
                     </option>
-                <?php endforeach;?>
+                <?php endforeach; ?>
             </select>
         </label>
 

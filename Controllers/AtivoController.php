@@ -1,7 +1,8 @@
 <?php 
-require_once 'Models/Ativo.php';
+permissaoParaVerSite();
 require_once 'Repositories/AtivoRepository.php';
 require_once __DIR__ . '/../Services/AtivoService.php';
+require_once 'Views/Shared/navbar.php';
 
 $ativoService = new AtivoService($pdo);
 $ativoRepository = new AtivoRepository($pdo);

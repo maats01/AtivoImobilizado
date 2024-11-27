@@ -76,4 +76,17 @@ function traduzDataParaBanco(string $data) : string
 
     return $data_mysql;
 }
+
+function permissaoParaVerSite() : void
+{
+    if (!isset($_SESSION))
+    {
+        session_start();
+    }
+
+    if (!isset($_SESSION['id']))
+    {
+        die("Você precisa estar logado antes de acessar o sistema. <p><a href=\"index.php\">Fazer login</a></p>");
+    }
+}
 ?>
