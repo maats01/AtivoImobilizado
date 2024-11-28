@@ -33,12 +33,12 @@
     }
 </script>
 
-<form method="post">
+<form class="form-geral" method="post">
     <fieldset>
         <legend>Novo ativo</legend>
         <label>
             Descrição:
-            <input type="text" name="descricao" value="<?php echo htmlentities($ativo->getDescricao()); ?>" required>
+            <input class="input-geral" type="text" name="descricao" value="<?php echo htmlentities($ativo->getDescricao()); ?>" required>
         </label>
 
         <label>
@@ -86,7 +86,7 @@
         </label>
 
         <label>
-            Vida Útil:
+            Vida Útil (anos):
             <?php if ($tem_erros && isset($erros_validacao['vida_util'])) : ?>
                 <span class="erro"><?php echo $erros_validacao['vida_util']; ?></span>
             <?php endif; ?>

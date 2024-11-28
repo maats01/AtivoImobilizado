@@ -1,9 +1,9 @@
-<form method="post">
+<form class="form-geral" method="post">
     <fieldset>
         <legend>Novo setor</legend>
         <label>
             Descrição:
-            <input type="text" name="descricao" value="<?php echo htmlentities($setor->getDescricao()); ?>" required>
+            <input class="input-geral" type="text" name="descricao" value="<?php echo htmlentities($setor->getDescricao()); ?>" required>
         </label>
         <input type="submit" value="Enviar">
     </fieldset>

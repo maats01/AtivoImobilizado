@@ -21,7 +21,7 @@
         <p><strong>Rua:</strong> <?php echo $filial->getRua(); ?></p>
         <p><strong>Número:</strong> <?php echo $filial->getNumero(); ?></p>
         <label>Setores:</label>
-        <form method="post">
+        <form class="form-geral" method="post">
             <select name="setores[]" id="setores" multiple>
                 <?php foreach ($setores as $setor): ?>
                     <option value="<?php echo $setor->getId(); ?>"
@@ -29,8 +29,10 @@
                         <?php echo htmlentities($setor->getDescricao()); ?></option>
                 <?php endforeach; ?>
             </select>
-            <button type="submit">Atualizar</button>
+            <br>
+            <button class="input-submit" type="submit">Atualizar</button>
         </form>
+        <button onclick="window.location.href='index.php?rota=Filial'">Voltar</button>
     </div>
     <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@3.1.0/dist/js/multi-select-tag.js"></script>
     <script>
@@ -45,7 +47,6 @@
             }
         )
     </script>
-    <a class="confirmacao" href="index.php?rota=Filial">Voltar</a>
 </body>
 
 </html>
