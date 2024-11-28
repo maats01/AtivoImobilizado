@@ -113,7 +113,7 @@
 
         <label>
             Valor:
-            <input type="number" inputmode="decimal" name="valor" step="0.010" value="<?php echo $ativo->getValor() !== 0.0 ? htmlentities($ativo->getValor()) : ''; ?>" required>
+            <input type="number" name="valor" step="0.01" value="<?php echo $ativo->getValor() !== 0.0 ? htmlentities($ativo->getValor()) : ''; ?>" required>
         </label>
 
         <input type="submit" value="Enviar">

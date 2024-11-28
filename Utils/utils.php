@@ -86,7 +86,7 @@ function permissaoParaVerSite() : void
 
     if (!isset($_SESSION['id']))
     {
-        die("Você precisa estar logado antes de acessar o sistema. <p><a href=\"index.php\">Fazer login</a></p>");
+        redirecionar('Login');
     }
 }
 ?>

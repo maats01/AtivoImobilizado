@@ -92,7 +92,7 @@
                 <?php echo $ativo->getEstadoAtivo() == 1 ? 'Ativo' : 'Baixado'; ?>
             </td>
             <td>
-                <?php echo 'R$ ' . $ativo->getValor(); ?>
+                <?php echo 'R$ ' . number_format($ativo->getValor(), 2, ',', '.'); ?>
             </td>
             <td>
                 <a class="confirmacao" href="?rota=ativo&edit_id=<?php echo $ativo->getId(); ?>">

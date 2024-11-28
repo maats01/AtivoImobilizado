@@ -17,6 +17,10 @@
             <br><br>
             <input class="input-login" type="password" name="senha" placeholder="senha" required>
             <br><br>
+            <?php if ($tem_erro) :?>
+            <p>Usuário ou senha incorretos, tente novamente.</p>
+            <?php endif;?>
+            <br>
             <button class="input-submit" type="submit">ACESSAR</button>
             <br><br>
             <button class="input-cadastro" onclick="window.location.href='?rota=Cadastro'">CADASTRE-SE</button>
