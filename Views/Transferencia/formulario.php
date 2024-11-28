@@ -66,7 +66,7 @@
     });
 </script>
 
-<form method="post">
+<form class="form-geral" method="post">
     <fieldset>
         <legend>Nova transferência</legend>
         <label>
